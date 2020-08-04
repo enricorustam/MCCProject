@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj": {}
+  },
+  "projects": {
+    "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
+        "projectName": "ASP.NetCoreProject",
+        "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
+        "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
+        "outputPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Enrico\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.3, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.2, )"
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.1.10, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
+        "projectName": "Client",
+        "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
+        "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
+        "outputPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Enrico\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
+                "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.3, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.2, )"
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.1.10, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
