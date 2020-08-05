@@ -8,11 +8,13 @@ namespace ASP.NetCoreProject.ViewModels
     public class FormVM
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Duration { get; set; }
 
+        public int employeeId { get; set; }
+        public int employeeNIP { get; set; }
+        public string employeeName { get; set; }
         public int supervisorId { get; set; }
         public string supervisorName { get; set; }
         public int departmentId { get; set; }

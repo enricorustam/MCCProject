@@ -35,6 +35,8 @@ namespace ASP.NetCoreProject
             services.AddScoped<ISupervisorRepository, SupervisorRepository>();
             services.AddScoped<IFormRepository, FormRepository>();
             services.AddScoped<IValidationRepository, ValidationRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IAdminRepositoy, AdminRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -25,7 +25,7 @@ namespace ASP.NetCoreProject.Repository
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_InsertForm";
-                parameters.Add("Name", form.Name);
+                parameters.Add("employee", form.employeeId);
                 parameters.Add("StartDate", form.StartDate);
                 parameters.Add("EndDate", form.EndDate);
                 parameters.Add("Duration", form.Duration);
@@ -74,7 +74,7 @@ namespace ASP.NetCoreProject.Repository
             {
                 var procName = "SP_EditForm";
                 parameters.Add("Id", Id);
-                parameters.Add("Name", form.Name);
+                parameters.Add("employee", form.employeeId);
                 parameters.Add("StartDate", form.StartDate);
                 parameters.Add("EndDate", form.EndDate);
                 parameters.Add("Duration", form.Duration);

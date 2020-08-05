@@ -7,18 +7,12 @@ using System.Threading.Tasks;
 
 namespace ASP.NetCoreProject.Models
 {
-    [Table("TB_M_Form")]
-    public class Form
+    [Table("TB_M_Employee")]
+    public class Employee
     {
         [Key]
         public int Id { get; set; }
+        public int NIP { get; set; }
         public string Name { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public int Duration { get; set; }
-
-        public Employee employee { get; set; }
-        public Supervisor supervisor { get; set; }
-        public Department department { get; set; }
     }
 }

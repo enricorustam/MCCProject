@@ -15,5 +15,7 @@ namespace ASP.NetCoreProject.Context
         public DbSet<Department> Departments { get; set; }
         public DbSet<Validation> Validations  { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }
