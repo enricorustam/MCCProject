@@ -20,9 +20,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<DepartmentVM>> GetDepartments()
+        public IEnumerable<DepartmentVM> GetDepartments()
         {
-            return await _departmentRepository.GetAll();
+            return _departmentRepository.GetAll();
         }
 
         [HttpPost]
@@ -37,9 +37,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet("{Id}")]
-        public DepartmentVM GetIdDepartments(int Id)
+        public async Task<IEnumerable<DepartmentVM>> GetIdDepartments(int Id)
         {
-            return _departmentRepository.GetById(Id);
+            return await _departmentRepository.GetById(Id);
         }
 
         [HttpPut("{Id}")]

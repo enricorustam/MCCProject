@@ -8,9 +8,9 @@ namespace ASP.NetCoreProject.Repository.Interface
 {
     public interface IEmployeeRepository
     {
-        Task<IEnumerable<EmployeeVM>> GetAll();
+        IEnumerable<EmployeeVM> GetAll();
 
-        EmployeeVM GetById(int Id);
+        Task<IEnumerable<EmployeeVM>> GetById(int Id);
 
         int Create(EmployeeVM employee);
         int Update(EmployeeVM employee, int Id);

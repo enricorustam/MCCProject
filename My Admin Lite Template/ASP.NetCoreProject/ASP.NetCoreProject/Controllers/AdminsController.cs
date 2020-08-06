@@ -21,9 +21,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AdminVM>> GetAdmins()
+        public IEnumerable<AdminVM> GetAdmins()
         {
-            return await _adminRepository.GetAll();
+            return _adminRepository.GetAll();
         }
 
 
@@ -40,9 +40,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet("{id}")]
-        public AdminVM GetAdmins(int Id)
+        public async Task<IEnumerable<AdminVM>> GetAdmins(int Id)
         {
-            return _adminRepository.GetById(Id);
+            return await _adminRepository.GetById(Id);
         }
 
         [HttpPut("{id}")]

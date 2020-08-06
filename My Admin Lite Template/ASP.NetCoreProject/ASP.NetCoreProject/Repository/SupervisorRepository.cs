@@ -42,25 +42,26 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
-        public Task<IEnumerable<SupervisorVM>> GetAll()
+        public IEnumerable<SupervisorVM> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetAllSupervisor";
-                var getAllSupervisor = connection.QueryAsync<SupervisorVM>(procName, commandType: CommandType.StoredProcedure);
+                var getAllSupervisor = connection.Query<SupervisorVM>(procName, commandType: CommandType.StoredProcedure);
                 return getAllSupervisor;
             }
         }
 
-        public SupervisorVM GetById(int Id)
+        public async Task<IEnumerable<SupervisorVM>> GetById(int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetIdSupervisor";
                 parameters.Add("Id", Id);
-                var getIdSupervisor = connection.Query<SupervisorVM>(procName, parameters, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                var getIdSupervisor = await connection.QueryAsync<SupervisorVM>(procName, parameters, commandType: CommandType.StoredProcedure);
+
                 return getIdSupervisor;
-            };
+            }
         }
 
         public int Update(SupervisorVM supervisor, int Id)

@@ -1,89 +1,98 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Layout/_LayoutFikri.cshtml";
 }
 
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row bg-title">
-                <div class="col-lg-12">
-                    <h4 class="page-title">Basic Table</h4>
-                    <ol class="breadcrumb">
-                        <li><a href="#">Dashboard</a></li>
-                        <li class="active">Basic Table</li>
-                    </ol>
-                </div>
-                <!-- /.col-lg-12 -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-12">
+                <h4 class="page-title">Basic Table</h4>
+                <ol class="breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li class="active">Basic Table</li>
+                </ol>
             </div>
-            <!-- row -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="white-box">
-                        <h3>Department</h3>
-                        <div>
-                            <span data-toggle="modal" data-target="#mymodal" onclick="ClearScreen();">
-                                <button class="btn pull-right hidden-sm-down btn-success"><i class="mdi mdi-plus-circle"></i> Create</button>
-                            </span>
-                        </div>
-                        <div class="modal fade" id="mymodal" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="container">
-                                            <form>
-                                                @*<div class="form-group">
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3>Department</h3>
+                    <div>
+                        <span data-toggle="modal" data-target="#mymodal" onclick="ClearScreen();">
+                            <button class="btn pull-right hidden-sm-down btn-primary" data-toggle="tooltip" title="Create"><i class="fa fa-plus-square-o" ></i></button>
+                        </span>
+                    </div>
+                    <div class="modal fade" id="mymodal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <form>
+                                            @*<div class="form-group">
                                                     <input type="text" class="form-control" id="Id" name="Id" hidden />
                                                 </div>*@
-                                                <div class="form-group col-md-6">
-                                                    <label for="Department">Department Name:</label>
-                                                    <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Department" />
-                                                </div>
-                                            </form>
-                                        </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="Department">Department Name:</label>
+                                                <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Department" />
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn-outline-success" data-dismiss="modal" id="Save" onclick="Save();">Insert</button>
-                                        <button type="button" class="btn-outline-warning" data-dismiss="modal" id="Update" onclick="Update();">Update</button>
-                                        <button type="button" class="btn-outline-primary" data-dismiss="modal">Close</button>
-                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn-outline-success" data-dismiss="modal" id="Save" onclick="Save();">Insert</button>
+                                    <button type="button" class="btn-outline-warning" data-dismiss="modal" id="Update" onclick="Update();">Update</button>
+                                    <button type="button" class="btn-outline-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="table-responsive m-t-40">
-                            <table id="department" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+                    </div>
+                    <div class="table-responsive m-t-40">
+                        <table id="department" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-                            </table>
-                        </div>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </div>
+    <!-- /.container-fluid -->
+</div>
 
 @section Scripts{
-    <script src="~/myadmin-lite/js/jquery.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="~/myadmin-lite/bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="~/myadmin-lite/js/bootstrap.min.js"></script>
+    <script src="~/myadmin-lite/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Menu Plugin JavaScript -->
-    <script src="~/myadmin-lite/js/metisMenu.min.js"></script>
+    <script src="~/myadmin-lite/bower/metisMenu/dist/metisMenu.min.js"></script>
     <!--Nice scroll JavaScript -->
-    <script src="~/myadmin-lite/js/jquery.nicescroll.js"></script>
+    <script src="js/jquery.nicescroll.js"></script>
+    <!--Morris JavaScript -->
+    <script src="~/myadmin-lite/bower/raphael/raphael-min.js"></script>
+    <script src="~/myadmin-lite/bower/morrisjs/morris.js"></script>
     <!--Wave Effects -->
     <script src="~/myadmin-lite/js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js "></script>
+    
+    <!-- end - This is for export functionality only -->
     <script src="~/myadmin-lite/js/myadmin.js"></script>
-
+    <script src="~/myadmin-lite/js/dashboard1.js"></script>
 
     @*<script src="~/Mini AdminPro/assets/plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap tether Core JavaScript -->
@@ -102,15 +111,14 @@
         <!-- This is data table -->
         <script src="~/Mini AdminPro/assets/plugins/datatables/jquery.dataTables.min.js"></script>*@
 
-    <script src="~/Scripts/DepartmentScripts.js"></script>
 
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
     @*<script src="~/Mini AdminPro/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>*@
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js "></script>
+
     @*<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>*@
+    <script src="~/Scripts/DepartmentScripts.js"></script>
+
 
 }
-

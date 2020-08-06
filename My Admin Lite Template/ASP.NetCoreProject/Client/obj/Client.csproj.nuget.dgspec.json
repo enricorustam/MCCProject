@@ -1,31 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj": {}
+    "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj": {}
   },
   "projects": {
-    "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
+    "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
+        "projectUniqueName": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
         "projectName": "ASP.NetCoreProject",
-        "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
-        "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-        "outputPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\obj\\",
+        "projectPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Enrico\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
         },
         "frameworks": {
           "netcoreapp2.1": {
@@ -61,6 +63,7 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
@@ -71,41 +74,49 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj": {
+    "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
+        "projectUniqueName": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
-        "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-        "outputPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\obj\\",
+        "projectPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Enrico\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
         },
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
-                "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj"
+              "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
+                "projectPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj"
               }
             }
           }
@@ -135,6 +146,7 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
@@ -145,10 +157,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
