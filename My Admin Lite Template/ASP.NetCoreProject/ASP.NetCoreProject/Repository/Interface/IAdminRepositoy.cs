@@ -8,9 +8,9 @@ namespace ASP.NetCoreProject.Repository.Interface
 {
     interface IAdminRepositoy
     {
-        IEnumerable<AdminVM> GetAll();
+        Task<IEnumerable<AdminVM>> GetAll();
 
-        Task<IEnumerable<AdminVM>> GetById(int Id);
+        AdminVM GetById(int Id);
 
         int Create(AdminVM admin);
         int Update(AdminVM admin, int Id);

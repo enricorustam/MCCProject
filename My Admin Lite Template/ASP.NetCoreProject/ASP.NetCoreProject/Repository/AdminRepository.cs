@@ -44,19 +44,25 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
-        public IEnumerable<AdminVM> GetAll()
+        public async Task<IEnumerable<AdminVM>> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetAllAdmin";
-                var getAllAdmin = connection.Query<AdminVM>(procName, commandType: CommandType.StoredProcedure);
+                var getAllAdmin = await connection.QueryAsync<AdminVM>(procName, commandType: CommandType.StoredProcedure);
                 return getAllAdmin;
             }
         }
 
-        public Task<IEnumerable<AdminVM>> GetById(int Id)
+        public AdminVM GetById(int Id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
+            {
+                var procName = "SP_GetIdAdmin";
+                parameters.Add("Id", Id);
+                var getIdAdmin = connection.Query<AdminVM>(procName, parameters, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                return getIdAdmin;
+            }
         }
 
         public int Update(AdminVM admin, int Id)

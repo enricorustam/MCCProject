@@ -20,9 +20,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<EmployeeVM> GetEmployees()
+        public async Task<IEnumerable<EmployeeVM>> GetEmployees()
         {
-            return _employeeRepository.GetAll();
+            return await _employeeRepository.GetAll();
         }
 
 
@@ -39,9 +39,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IEnumerable<EmployeeVM>> GetEmployees(int Id)
+        public EmployeeVM GetEmployees(int Id)
         {
-            return await _employeeRepository.GetById(Id);
+            return _employeeRepository.GetById(Id);
         }
 
         [HttpPut("{id}")]

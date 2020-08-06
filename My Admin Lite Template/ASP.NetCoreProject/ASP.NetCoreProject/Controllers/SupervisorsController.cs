@@ -20,9 +20,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<SupervisorVM> GetSupervisors()
+        public async Task<IEnumerable<SupervisorVM>> GetSupervisors()
         {
-            return _supervisorRepository.GetAll();
+            return await _supervisorRepository.GetAll();
         }
 
 
@@ -39,9 +39,9 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IEnumerable<SupervisorVM>> GetSupervisors(int Id)
+        public SupervisorVM GetSupervisors(int Id)
         {
-            return await _supervisorRepository.GetById(Id);
+            return _supervisorRepository.GetById(Id);
         }
 
         [HttpPut("{id}")]
