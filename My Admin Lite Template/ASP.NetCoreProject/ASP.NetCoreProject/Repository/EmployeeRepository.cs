@@ -43,24 +43,23 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
-        public IEnumerable<EmployeeVM> GetAll()
+        public async Task<IEnumerable<EmployeeVM>> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetAllEmployee";
-                var getAllEmployee = connection.Query<EmployeeVM>(procName, commandType: CommandType.StoredProcedure);
+                var getAllEmployee = await connection.QueryAsync<EmployeeVM>(procName, commandType: CommandType.StoredProcedure);
                 return getAllEmployee;
             }
         }
 
-        public async Task<IEnumerable<EmployeeVM>> GetById(int Id)
+        public EmployeeVM GetById(int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetIdEmployee";
                 parameters.Add("Id", Id);
-                var getIdEmployee = await connection.QueryAsync<EmployeeVM>(procName, parameters, commandType: CommandType.StoredProcedure);
-
+                var getIdEmployee = connection.Query<EmployeeVM>(procName, parameters, commandType: CommandType.StoredProcedure).SingleOrDefault();
                 return getIdEmployee;
             }
         }

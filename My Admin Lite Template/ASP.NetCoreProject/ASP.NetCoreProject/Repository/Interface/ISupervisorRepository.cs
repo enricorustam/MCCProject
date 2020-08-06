@@ -8,9 +8,9 @@ namespace ASP.NetCoreProject.Repository.Interface
 {
     public interface ISupervisorRepository
     {
-        IEnumerable<SupervisorVM> GetAll();
+        Task<IEnumerable<SupervisorVM>> GetAll();
 
-        Task<IEnumerable<SupervisorVM>> GetById(int Id);
+        SupervisorVM GetById(int Id);
 
         int Create(SupervisorVM supervisor);
         int Update(SupervisorVM supervisor, int Id);

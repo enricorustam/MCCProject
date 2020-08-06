@@ -1,10 +1,10 @@
 ﻿CREATE PROCEDURE SP_InsertForm
-	@Name varchar(50), 
+	@employee int,
 	@StartDate DateTime,
 	@EndDate DateTime,
 	@Duration int,
 	@supervisor int,
 	@department int
 AS
-	insert into TB_M_Form(Name, StartDate, EndDate, Duration, supervisorId, departmentId) values(@Name,@StartDate,@EndDate,@Duration,@supervisor,@department);
+	insert into TB_M_Form(employeeId, StartDate, EndDate, Duration, supervisorId, departmentId) values(@employee,@StartDate,@EndDate,@Duration,@supervisor,@department);
 return 0

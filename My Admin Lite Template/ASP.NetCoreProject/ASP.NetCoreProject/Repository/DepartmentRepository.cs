@@ -42,24 +42,23 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
-        public IEnumerable<DepartmentVM> GetAll()
+        public async Task<IEnumerable<DepartmentVM>> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetAllDepartment";
-                var getAllDepartment = connection.Query<DepartmentVM>(procName, commandType: CommandType.StoredProcedure);
+                var getAllDepartment = await connection.QueryAsync<DepartmentVM>(procName, commandType: CommandType.StoredProcedure);
                 return getAllDepartment;
             }
         }
 
-        public async Task<IEnumerable<DepartmentVM>> GetById(int Id)
+        public DepartmentVM GetById(int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetIdDepartment";
                 parameters.Add("Id", Id);
-                var getIdDepartment = await connection.QueryAsync<DepartmentVM>(procName, parameters, commandType: CommandType.StoredProcedure);
-
+                var getIdDepartment = connection.Query<DepartmentVM>(procName, parameters, commandType: CommandType.StoredProcedure).SingleOrDefault();
                 return getIdDepartment;
             }
         }

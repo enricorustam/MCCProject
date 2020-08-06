@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE SP_EditForm
 	@Id int,
-	@Name varchar(50), 
+	@employee int, 
 	@StartDate DateTime,
 	@EndDate DateTime,
 	@Duration int,
@@ -9,7 +9,7 @@
 AS
 	Update TB_M_Form
 	set
-		Name = @Name,
+		employeeId = @employee,
 		StartDate = @StartDate,
 		EndDate = @EndDate,
 		Duration = @Duration,
