@@ -33,6 +33,7 @@ D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreP
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.runtimeconfig.dev.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.csprojAssemblyReference.cache
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.AssemblyInfoInputs.cache
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.AssemblyInfo.cs
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.csproj.CoreCompileInputs.cache

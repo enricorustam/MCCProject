@@ -8,9 +8,9 @@ namespace ASP.NetCoreProject.Repository.Interface
 {
     public interface IDepartmentRepository
     {
-        IEnumerable<DepartmentVM> GetAll();
+        Task<IEnumerable<DepartmentVM>> GetAll();
 
-        Task<IEnumerable<DepartmentVM>> GetById(int Id);
+        DepartmentVM GetById(int Id);
 
         int Create(DepartmentVM department);
         int Update(DepartmentVM department, int Id);

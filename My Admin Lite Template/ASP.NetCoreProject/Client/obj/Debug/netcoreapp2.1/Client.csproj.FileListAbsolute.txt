@@ -79,6 +79,7 @@ F:\program\belajar .NET\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Deb
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\appsettings.Development.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\appsettings.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\libman.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.deps.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.dev.json
@@ -120,4 +121,3 @@ D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreP
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.dll
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.pdb
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.genruntimeconfig.cache
-D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\libman.json

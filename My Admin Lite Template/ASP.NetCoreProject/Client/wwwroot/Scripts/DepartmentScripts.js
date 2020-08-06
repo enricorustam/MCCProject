@@ -20,7 +20,11 @@ $(document).ready(function () {
                         + '<button class="btn btn-danger fa fa-trash-o" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ></button>'
                 }
             }
-        ]
+        ],
+        "columnDefs": [{
+            "targets": [1],
+            "orderable": false
+        }]
     });
 });
 
@@ -60,7 +64,8 @@ function Save() {
                 position: 'center',
                 type: 'success',
                 title: 'Department inserted Successfully'
-            })
+            });
+            table.ajax.reload();
         } else {
             Swal.fire('Error', 'Failed to Input', 'error');
             ClearScreen();
@@ -83,7 +88,8 @@ function Update() {
                 position: 'center',
                 type: 'success',
                 title: 'Department Updated Successfully'
-            })
+            });
+            table.ajax.reload();
         } else {
             Swal.fire('Error', 'Failed to Input', 'error');
             ClearScreen();

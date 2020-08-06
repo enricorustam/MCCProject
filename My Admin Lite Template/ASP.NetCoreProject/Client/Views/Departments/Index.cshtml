@@ -23,8 +23,12 @@
                     <h3>Department</h3>
                     <div>
                         <span data-toggle="modal" data-target="#mymodal" onclick="ClearScreen();">
-                            <button class="btn pull-right hidden-sm-down btn-primary" data-toggle="tooltip" title="Create"><i class="fa fa-plus-square-o" ></i></button>
+                            <button class="btn pull-right hidden-sm-down btn-primary fa fa-plus-square-o" data-toggle="tooltip" title="Create"></button>
                         </span>
+                        <!-- ======================== Export  ====================================== -->
+                        <a asp-action="Excel" class="btn btn-success pull-right hidden-sm-down fa fa-file-excel-o" data-toggle="tooltip" title="Export Excel"></a>
+                        <a asp-action="ExportPdf" class="btn btn-danger pull-right hidden-sm-down fa fa-file-pdf-o" data-toggle="tooltip" title="Export Pdf"></a>
+                        <!-- ======================== Export  ====================================== -->
                     </div>
                     <div class="modal fade" id="mymodal" role="dialog">
                         <div class="modal-dialog">
@@ -35,9 +39,9 @@
                                 <div class="modal-body">
                                     <div class="container">
                                         <form>
-                                            @*<div class="form-group">
-                                                    <input type="text" class="form-control" id="Id" name="Id" hidden />
-                                                </div>*@
+                                            <div class="form-group">
+                                                <input type="hidden" class="form-control" id="Id" name="Id"  />
+                                            </div>
                                             <div class="form-group col-md-6">
                                                 <label for="Department">Department Name:</label>
                                                 <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Department" />
