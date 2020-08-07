@@ -1,17 +1,17 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Layout/_LayoutFikri.cshtml";
 }
 
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-12">
-                <h4 class="page-title">Basic Table</h4>
+                <h4 class="page-title">Form Table</h4>
                 <ol class="breadcrumb">
                     <li><a href="#">Dashboard</a></li>
-                    <li class="active">Basic Table</li>
+                    <li class="active">Form Table</li>
                 </ol>
             </div>
             <!-- /.col-lg-12 -->
@@ -23,8 +23,12 @@
                     <h3>Form Overtime</h3>
                     <div>
                         <span data-toggle="modal" data-target="#mymodal" onclick="ClearScreen();">
-                            <button class="btn pull-right hidden-sm-down btn-success"><i class="mdi mdi-plus-circle"></i> Create</button>
+                            <button class="btn pull-right hidden-sm-down btn-primary fa fa-plus-square-o" data-toggle="tooltip" title="Create"></button>
                         </span>
+                        <!-- ======================== Export  ====================================== -->
+                        <a asp-action="Excel" class="btn btn-success pull-right hidden-sm-down fa fa-file-excel-o" data-toggle="tooltip" title="Export Excel"></a>
+                        <a asp-action="ExportPdf" class="btn btn-danger pull-right hidden-sm-down fa fa-file-pdf-o" data-toggle="tooltip" title="Export Pdf"></a>
+                        <!-- ======================== Export  ====================================== -->
                     </div>
                     <div class="modal fade" id="mymodal" role="dialog">
                         <div class="modal-dialog">
@@ -34,35 +38,37 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="container">
-                                        <form>
-                                            @*<div class="form-group">
-                                                    <input type="text" class="form-control" id="Id" name="Id" hidden />
-                                                </div>*@
-                                            <div class="form-group col-sm-6">
-                                                <label for="Form">Employee Name:</label>
-                                                <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Name" />
-                                            </div>
-                                            <div class="form-group col-sm-6">
-                                                <label for="Form">Start Date:</label>
-                                                <input type="datetime-local" class="form-control" id="StartDate" name="StartDate" placeholder="Enter Date" />
-                                            </div>
-                                            <div class="form-group col-sm-6">
-                                                <label for="Form">End Date:</label>
-                                                <input type="datetime-local" class="form-control" id="EndDate" name="EndDate" placeholder="Enter Date" />
-                                            </div>
-                                            <div class="form-group col-sm-6">
-                                                <label for="Form">Duration:</label>
-                                                <input type="text" class="form-control" id="Duration" name="Duration" placeholder="Enter Duration" />
-                                            </div>
-                                            <div class="form-group col-sm-6">
-                                                <label for="DepartmentOption">Supervisor</label>
-                                                <select class="form-control" id="SupervisorOption" name="SupervisorOption"></select>
-                                            </div>
-                                            <div class="form-group col-sm-6">
-                                                <label for="DepartmentOption">Department</label>
-                                                <select class="form-control" id="DepartmentOption" name="DepartmentOption"></select>
-                                            </div>
-                                        </form>
+                                        <div class="col-md-6">
+                                            <form>
+                                                <div class="form-group ">
+                                                    <input type="hidden" class="form-control" id="Id" name="Id" />
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="EmployeeOption">Employee</label>
+                                                    <select class="form-control" id="EmployeeOption" name="EmployeeOption"></select>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="Form">Start Date:</label>
+                                                    <input type="datetime-local" class="form-control" id="StartDate" name="StartDate" placeholder="Enter Date" />
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="Form">End Date:</label>
+                                                    <input type="datetime-local" class="form-control" id="EndDate" name="EndDate" placeholder="Enter Date" />
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="Form">Duration:</label>
+                                                    <input type="text" class="form-control" id="Duration" name="Duration" placeholder="Enter Duration" />
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="SupervisorOption">Supervisor</label>
+                                                    <select class="form-control" id="SupervisorOption" name="SupervisorOption"></select>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="DepartmentOption">Department</label>
+                                                    <select class="form-control" id="DepartmentOption" name="DepartmentOption"></select>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

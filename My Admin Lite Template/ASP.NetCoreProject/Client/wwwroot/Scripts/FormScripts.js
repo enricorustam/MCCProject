@@ -1,6 +1,7 @@
 ﻿var table = null;
 var arrDepart = [];
 var arrSuperv = [];
+var arrEmp = [];
 
 function convertToDate(data) {
     // The 6th+ positions contain the number of milliseconds in Universal Coordinated Time between the specified date and midnight January 1, 1970.
@@ -8,7 +9,7 @@ function convertToDate(data) {
     // Format using moment.js.
     var dtStartWrapper = moment(dtStart);
     return dtStartWrapper.format("MM/DD/YYYY HH:MM");
-}
+};
 
 $(document).ready(function () {
     $(function () {
@@ -35,7 +36,7 @@ $(document).ready(function () {
             //        return meta.row;
             //    }
             //},
-            { "data": "name" },
+            { "data": "employeeName" },
             {
                 "data": "startDate",
                 //"render": function (data) { return convertToDate(data); }
@@ -51,10 +52,9 @@ $(document).ready(function () {
                 "sortable": false,
                 "render": function (data, type, row) {
                     //console.log(row);
-                    $('[data-toggle="tooltip"]').tooltip();
-                    return '<button class="btn btn-md btn-outline-warning btn-circle" data-toggle="tooltip" data-placement="left"  title="Edit" onclick="return Update(' + row.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
+                    return '<button class="btn btn-info fa fa-pencil-square-o" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ></button>'
                         + '&nbsp;'
-                        + '<button class="btn btn-md btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ><i class="fa fa-lg fa-trash"></i></button>'
+                        + '<button class="btn btn-danger fa fa-trash-o" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ></button>'
                 }
             }
         ]
@@ -65,11 +65,17 @@ $(document).ready(function () {
 
 function ClearScreen() {
     $('#Id').val('');
-    $('#Name').val('');
+    $('#EmployeeOption').val('');
+    $('#StartDate').val('');
+    $('#EndDate').val('');
+    $('#Duration').val('');
+    $('#SupervisorOption').val('');
+    $('#DepartmentOption').val('');
     $('#Update').hide();
     $('#Save').show();
 }
 
+//============= Get data Department for Dropdown =================
 function LoadDepartment(element) {
     //debugger;
     if (arrDepart.length === 0) {
@@ -97,8 +103,9 @@ function renderDepartment(element) {
 }
 
 LoadDepartment($('#DepartmentOption'))
+//============= Get data Department for Dropdown =================
 
-//Supervisor
+//============= Get data Supervisor for Dropdown =================
 function LoadSupervisor(element) {
     //debugger;
     if (arrSuperv.length === 0) {
@@ -126,19 +133,49 @@ function renderSupervisor(element) {
 }
 
 LoadSupervisor($('#SupervisorOption'))
+//============= Get data Supervisor for Dropdown =================
 
+//============= Get data Employee for Dropdown =================
+function LoadEmployee(element) {
+    debugger;
+    if (arrEmp.length === 0) {
+        $.ajax({
+            type: "Get",
+            url: "/Employees/LoadEmployee",
+            success: function (data) {
+                arrEmp = data;
+                renderEmployee(element);
+            }
+        });
+    }
+    else {
+        renderEmployee(element);
+    }
+}
+
+function renderEmployee(element) {
+    var $option = $(element);
+    $option.empty();
+    $option.append($('<option/>').val('0').text('Select Employee').hide());
+    $.each(arrEmp, function (i, val) {
+        $option.append($('<option/>').val(val.id).text(val.name))
+    });
+}
+
+LoadEmployee($('#EmployeeOption'))
+//============= Get data Employee for Dropdown =================
 
 function GetById(id) {
     $.ajax({
         url: "/forms/GetById/",
         data: { id: id }
     }).then((result) => {
-        //debugger;
+        debugger;
         $('#Id').val(result.id);
-        $('#Name').val(result.name);
-        $('#StartDate').val(result.StartDate);
-        $('#EndDate').val(result.EndDate);
-        $('#Duration').val(result.Duration);
+        $('#EmployeeOption').val(result.employeeId);
+        $('#StartDate').val(result.startDate);
+        $('#EndDate').val(result.endDate);
+        $('#Duration').val(result.duration);
         $('#SupervisorOption').val(result.supervisorId);
         $('#DepartmentOption').val(result.departmentId);
         $('#Save').hide();
@@ -150,7 +187,7 @@ function GetById(id) {
 function Save() {
     debugger;
     var Form = new Object();
-    Form.name = $('#Name').val();
+    Form.employeeId = $('#EmployeeOption').val();
     Form.StartDate = $('#StartDate').val();
     Form.EndDate = $('#EndDate').val();
     Form.Duration = $('#Duration').val();
@@ -179,9 +216,14 @@ function Save() {
 }
 
 function Update() {
+    debugger;
     var Form = new Object();
     Form.id = $('#Id').val();
-    Form.name = $('#Name').val();
+    Form.employeeId = $('#EmployeeOption').val();
+    Form.StartDate = $('#StartDate').val();
+    Form.EndDate = $('#EndDate').val();
+    Form.Duration = $('#Duration').val();
+    Form.supervisorId = $('#SupervisorOption').val();
     Form.departmentId = $('#DepartmentOption').val();
     $.ajax({
         type: 'POST',
@@ -190,7 +232,7 @@ function Update() {
         dataType: "JSON",
         data: Form
     }).then((result) => {
-        //debugger;
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',

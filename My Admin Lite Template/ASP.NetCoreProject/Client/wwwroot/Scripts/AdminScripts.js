@@ -2,16 +2,17 @@
 
 $(document).ready(function () {
     //debugger;
-    table = $("#supervisor").DataTable({
+    table = $("#myTable").DataTable({
         "processing": true,
         "ajax": {
-            url: "/Supervisors/LoadSupervisor",
+            url: "/Admins/LoadAdmin",
             type: "GET",
             dataType: "json",
             dataSrc: "",
         },
         "columns": [
-            { "data": "name" },
+            { "data": "username" },
+            { "data": "password" },
             {
                 "render": function (data, type, row) {
                     //console.log(row);
@@ -20,25 +21,31 @@ $(document).ready(function () {
                         + '<button class="btn btn-danger fa fa-trash-o" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ></button>'
                 }
             }
-        ]
+        ],
+        "columnDefs": [{
+            "targets": [2],
+            "orderable": false
+        }]
     });
 });
 
 function ClearScreen() {
     $('#Id').val('');
-    $('#Name').val('');
+    $('#Username').val('');
+    $('#Password').val('');
     $('#Update').hide();
     $('#Save').show();
 }
 
 function GetById(id) {
     $.ajax({
-        url: "/Supervisors/GetById/",
+        url: "/Admins/GetById/",
         data: { id: id }
     }).then((result) => {
         debugger;
         $('#Id').val(result.id);
-        $('#Name').val(result.name);
+        $('#Username').val(result.username);
+        $('#Password').val(result.password);
         $('#Save').hide();
         $('#Update').show();
         $('#mymodal').modal('show');
@@ -47,19 +54,20 @@ function GetById(id) {
 
 function Save() {
     debugger;
-    var Supervisor = new Object();
-    Supervisor.name = $('#Name').val();
+    var Admin = new Object();
+    Admin.username = $('#Username').val();
+    Admin.password = $('#Password').val();
     $.ajax({
         type: 'POST',
-        url: "/Supervisors/Insert/",
-        data: Supervisor
+        url: "/Admins/Insert/",
+        data: Admin
     }).then((result) => {
         debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
                 type: 'success',
-                title: 'Supervisor inserted Successfully'
+                title: 'Admin inserted Successfully'
             });
             table.ajax.reload();
         } else {
@@ -70,20 +78,21 @@ function Save() {
 }
 
 function Update() {
-    var Supervisor = new Object();
-    Supervisor.id = $('#Id').val();
-    Supervisor.name = $('#Name').val();
+    var Admin = new Object();
+    Admin.id = $('#Id').val();
+    Admin.username = $('#Username').val();
+    Admin.password = $('#Password').val();
     $.ajax({
         type: 'POST',
-        url: "/Supervisors/Update/",
-        data: Supervisor
+        url: "/Admins/Update/",
+        data: Admin
     }).then((result) => {
         debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
                 type: 'success',
-                title: 'Supervisor Updated Successfully'
+                title: 'Admin Updated Successfully'
             });
             table.ajax.reload();
         } else {
@@ -105,7 +114,7 @@ function Delete(id) {
         if (result.value) {
             //debugger;
             $.ajax({
-                url: "/Supervisors/Delete/",
+                url: "/Admins/Delete/",
                 data: { id: id }
             }).then((result) => {
                 debugger;
