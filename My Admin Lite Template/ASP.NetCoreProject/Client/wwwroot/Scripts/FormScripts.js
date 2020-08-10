@@ -3,6 +3,106 @@ var arrDepart = [];
 var arrSuperv = [];
 var arrEmp = [];
 
+am4core.useTheme(am4themes_animated);
+
+// =================================================================
+// Membuat chart (id/classchart, jenis chart)
+var chart = am4core.create("linechart", am4charts.XYChart);
+
+// Increase contrast by taking evey second color
+chart.colors.step = 2;
+
+// Add data
+// Mengambil data dari url (database)
+chart.dataSource.url = "/forms/LoadForm";
+chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
+
+// Create axes
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.minGridDistance = 50;
+
+// Setinng chart (field y, notasi di data (x,y), .., notasi data berbentuk apa)
+function createAxisAndSeries(field, name, opposite, bullet) {
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    //if (chart.yAxes.indexOf(valueAxis) != 0) {
+    //    valueAxis.syncWithAxis = chart.yAxes.getIndex(0);
+    //    //console.log(chart.yAxes)
+    //}
+
+    var series = chart.series.push(new am4charts.LineSeries());
+    series.dataFields.valueY = field;
+    series.dataFields.dateX = "endDate";
+    series.strokeWidth = 2;
+    series.yAxis = valueAxis;
+    series.name = name;
+    series.tooltipText = "{name}: [bold]{valueY}[/]";
+    series.tensionX = 0.8;
+    series.showOnInit = true;
+
+    var interfaceColors = new am4core.InterfaceColorSet();
+
+    switch (bullet) {
+        case "triangle":
+            var bullet = series.bullets.push(new am4charts.Bullet());
+            bullet.width = 12;
+            bullet.height = 12;
+            bullet.horizontalCenter = "middle";
+            bullet.verticalCenter = "middle";
+
+            var triangle = bullet.createChild(am4core.Triangle);
+            triangle.stroke = interfaceColors.getFor("background");
+            triangle.strokeWidth = 2;
+            triangle.direction = "top";
+            triangle.width = 12;
+            triangle.height = 12;
+            break;
+        case "rectangle":
+            var bullet = series.bullets.push(new am4charts.Bullet());
+            bullet.width = 10;
+            bullet.height = 10;
+            bullet.horizontalCenter = "middle";
+            bullet.verticalCenter = "middle";
+
+            var rectangle = bullet.createChild(am4core.Rectangle);
+            rectangle.stroke = interfaceColors.getFor("background");
+            rectangle.strokeWidth = 2;
+            rectangle.width = 10;
+            rectangle.height = 10;
+            break;
+        default:
+            var bullet = series.bullets.push(new am4charts.CircleBullet());
+            bullet.circle.stroke = interfaceColors.getFor("background");
+            bullet.circle.strokeWidth = 2;
+            break;
+    }
+
+    valueAxis.renderer.line.strokeOpacity = 1;
+    valueAxis.renderer.line.strokeWidth = 2;
+    valueAxis.renderer.line.stroke = series.stroke;
+    valueAxis.renderer.labels.template.fill = series.stroke;
+    valueAxis.renderer.opposite = opposite;
+
+    // Create vertical scrollbar and place it before the value axis
+    chart.scrollbarY = new am4core.Scrollbar();
+    chart.scrollbarY.parent = chart.leftAxesContainer;
+    chart.scrollbarY.toBack();
+    // Create a horizontal scrollbar with previe and place it underneath the date axis
+    chart.scrollbarX = new am4charts.XYChartScrollbar();
+    chart.scrollbarX.series.push(series);
+    chart.scrollbarX.parent = chart.bottomAxesContainer;
+
+    //dateAxis.start = 0.79;
+    dateAxis.keepSelection = true;
+}
+
+// Add legend
+chart.legend = new am4charts.Legend();
+
+createAxisAndSeries("duration", "Overtime Duration", false, "circle");
+
+// Add cursor agar data bisa dilihat per titik
+chart.cursor = new am4charts.XYCursor();
+
 function convertToDate(data) {
     // The 6th+ positions contain the number of milliseconds in Universal Coordinated Time between the specified date and midnight January 1, 1970.
     var dtStart = new Date(parseInt(data.substr(6)));
@@ -29,13 +129,6 @@ $(document).ready(function () {
             dataSrc: "",
         },
         "columns": [
-            //{
-            //    "data": "Id",
-            //    "sortable": true,
-            //    render: function (data, type, row, meta) {
-            //        return meta.row;
-            //    }
-            //},
             { "data": "employeeName" },
             {
                 "data": "startDate",
@@ -282,3 +375,91 @@ function Delete(id) {
         };
     });
 }
+
+
+//function chartAM4() {
+//    debugger;
+//    var LineChartManager = {
+//        GetChartData: function () {
+//            var obj = '';
+//            var jsonParam = '';
+//            var URL = '/forms/LoadForm'
+//            LineChartManager.GetJsonResult(url, jsonParam, false, false, onSuccess, onFailed);
+
+//            function onSuccess(jsonData) {
+//                obj = jsonData;
+//            }
+//            function onFailed(error) {
+//                alert(error.statusText);
+//            }
+//            return obj;
+//        },
+//        GetJsonResult: function (url, jsonparam, isAsync, isCache, successCallback, errorCalback) {
+//            $.ajax({
+//                type: 'GET',
+//                async: isAsync,
+//                cache: isCache,
+//                url: url,
+//                data: jsonparam,
+//                contentType: 'application/json; charset=utf-8',
+//                dataType: 'json',
+//                success: successCallback,
+//                error: errorCalback
+//            });
+//        }
+//    };
+
+//    var LineChartHelper = {
+//        LoadLineChart: function () {
+//            var data = LineChartManager.GetChartData();
+//            am4core.ready(function () {
+//                var chart = am4core.create("chartdiv", am4charts.XYChart);
+//                chart.data = data;
+//                chart.dateFormatter.inputDateFormat = "yyyy-mm-dd";
+//                var dateAxis = chart.xAxes.push(new am4charts.dateAxis());
+//                var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+//                var series = chart.series.push(new am4charts.LineSeries());
+//                series.dataFields.valueY = "Duration";
+//                series.dataFields.dateX = "EndDate";
+//                series.tooltipText = '{Duration}';
+//                series.strokeWidth = 2;
+//                series.minBulletDistance = 15;
+
+//                series.tooltip.background.cornerRadius = 20;
+//                series.tooltip.background.strokeOpacity = 0;
+//                series.tooltip.pointerOrientation = "vertical";
+//                series.tooltip.label.midWidth = 20;
+//                series.tooltip.label.minHeight = 20;
+//                series.tooltip.label.textAlign = 'middle';
+//                series.tooltip.label.textValign = 'middle';
+
+//                var bullet = series.bullets.push(new am4charts.CircleBullet());
+//                bullet.circle.strokeWidth = 2;
+//                bullet.circle.radius = 4;
+//                bullet.circle.fill = am4core.color('#fff');
+
+//                var bullethover = bullet.states.create('hover');
+//                bullethover.properties.scale = 1.3;
+
+//                chart.cursor = new am4charts.XYCursor();
+//                chart.cursor.behavior = 'panXY';
+//                chart.cursor.xAxis = dateAxis;
+//                chart.cursor.snapToSeries = series;
+
+//                chart.scrollbarY = new am4core.Scrollbar();
+//                chart.scrollbarY.parent = chart.leftAxesContainer;
+//                chart.scrollbarY.toBack();
+
+//                chart.scrollbarX = new am4charts.XYChartsScrollbar();
+//                chart.scrollbarX.series.push(series);
+//                chart.scrollbarX.parent = chart.bottomAxesContainer;
+
+//                chart.events.on('ready', function () {
+//                    dateAxis.zoom({ start: 0.79, end: 1 });
+//                });
+//            });
+//            debugger;
+//        }
+//    };
+//    debugger;
+//}
