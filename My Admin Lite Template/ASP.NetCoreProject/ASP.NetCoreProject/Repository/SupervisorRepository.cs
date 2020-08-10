@@ -42,12 +42,12 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
-        public Task<IEnumerable<SupervisorVM>> GetAll()
+        public async Task<IEnumerable<SupervisorVM>> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
             {
                 var procName = "SP_GetAllSupervisor";
-                var getAllSupervisor = connection.QueryAsync<SupervisorVM>(procName, commandType: CommandType.StoredProcedure);
+                var getAllSupervisor = await connection.QueryAsync<SupervisorVM>(procName, commandType: CommandType.StoredProcedure);
                 return getAllSupervisor;
             }
         }

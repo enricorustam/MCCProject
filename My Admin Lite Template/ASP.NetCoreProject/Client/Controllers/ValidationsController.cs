@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ASP.NetCoreProject.ViewModels;
+using Client.Pdf;
+using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -94,6 +97,62 @@ namespace Client.Controllers
         {
             var result = client.DeleteAsync("validations/" + id).Result;
             return Json(result);
+        }
+
+        public async Task<IActionResult> Excel()
+        {
+            List<ValidationVM> validations = new List<ValidationVM>();
+            HttpResponseMessage resView = await client.GetAsync("validations");
+            var resultView = resView.Content.ReadAsStringAsync().Result;
+            validations = JsonConvert.DeserializeObject<List<ValidationVM>>(resultView);
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("validations");
+                var currentRow = 1;
+                var number = 0;
+                worksheet.Cell(currentRow, 1).Value = "No";
+                worksheet.Cell(currentRow, 2).Value = "Id";
+                worksheet.Cell(currentRow, 3).Value = "Action";
+                worksheet.Cell(currentRow, 4).Value = "Supervisor Name";
+                worksheet.Cell(currentRow, 5).Value = "Form Id";
+
+                foreach (var val in validations)
+                {
+                    currentRow++;
+                    number++;
+                    worksheet.Cell(currentRow, 1).Value = number;
+                    worksheet.Cell(currentRow, 2).Value = val.Id;
+                    worksheet.Cell(currentRow, 3).Value = val.Action;
+                    worksheet.Cell(currentRow, 4).Value = val.supervisorName;
+                    worksheet.Cell(currentRow, 5).Value = val.formId;
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var conten = stream.ToArray();
+                    return File(conten, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "Validation_Data.xlsx");
+                }
+            }
+        }
+
+        public ActionResult ExportPdf()
+        {
+            ValidationPdf validationPdf = new ValidationPdf();
+            List<ValidationVM> validations = new List<ValidationVM>();
+
+            var resTask = client.GetAsync("validations");
+            resTask.Wait();
+            var result = resTask.Result;
+
+            var readTask = result.Content.ReadAsAsync<List<ValidationVM>>();
+            readTask.Wait();
+            validations = readTask.Result;
+
+            byte[] abytes = validationPdf.Prepare(validations);
+            return File(abytes, "application/pdf");
         }
     }
 }

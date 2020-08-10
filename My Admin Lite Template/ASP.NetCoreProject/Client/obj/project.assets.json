@@ -51,6 +51,15 @@
           "lib/netstandard2.0/ExcelNumberFormat.dll": {}
         }
       },
+      "iTextSharp/5.5.13.1": {
+        "type": "package",
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4729,7 +4738,6 @@
         "dependencies": {
           "ClosedXML": "0.95.3",
           "Dapper": "2.0.35",
-          "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10"
         },
         "compile": {
@@ -4811,6 +4819,22 @@
         "lib/netstandard1.0/ExcelNumberFormat.xml",
         "lib/netstandard2.0/ExcelNumberFormat.dll",
         "lib/netstandard2.0/ExcelNumberFormat.xml"
+      ]
+    },
+    "iTextSharp/5.5.13.1": {
+      "sha512": "xqzsYEYW/nMDjCtAXM5cl9fWil/Ju3HEGbsmoTKtltJc3M/9HNJzg++bCIOHm5uZITvRmZJWMO+S2u1yNG0gQg==",
+      "type": "package",
+      "path": "itextsharp/5.5.13.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "gnu-agpl-v3.0.md",
+        "itextsharp.5.5.13.1.nupkg.sha512",
+        "itextsharp.nuspec",
+        "lib/iTextSharp.xml",
+        "lib/itextsharp.dll",
+        "notice.txt"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -12817,41 +12841,44 @@
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.10"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.10",
+      "iTextSharp >= 5.5.13.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Enrico\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
+      "projectUniqueName": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
-      "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-      "outputPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\obj\\",
+      "projectPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\Client.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Enrico\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://api.nuget.org/v3/index.json": {},
+        "https://nuget.telerik.com/nuget": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
-              "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj"
+            "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj": {
+              "projectPath": "D:\\Metrodata Code Camp Online\\git\\MCCProject\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj"
             }
           }
         }
@@ -12881,6 +12908,7 @@
             "version": "[2.1.2, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
@@ -12888,14 +12916,36 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.1.10, )"
+          },
+          "iTextSharp": {
+            "target": "Package",
+            "version": "[5.5.13.1, )"
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'iTextSharp 5.5.13.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }

@@ -1,17 +1,17 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Layout/_LayoutFikri.cshtml";
 }
 
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-12">
-                <h4 class="page-title">Basic Table</h4>
+                <h4 class="page-title">Validation Table</h4>
                 <ol class="breadcrumb">
                     <li><a href="#">Dashboard</a></li>
-                    <li class="active">Basic Table</li>
+                    <li class="active">Validation Table</li>
                 </ol>
             </div>
             <!-- /.col-lg-12 -->
@@ -23,8 +23,12 @@
                     <h3>Form Validation</h3>
                     <div>
                         <span data-toggle="modal" data-target="#mymodal" onclick="ClearScreen();">
-                            <button class="btn pull-right hidden-sm-down btn-success"><i class="mdi mdi-plus-circle"></i> Create</button>
+                            <button class="btn pull-right hidden-sm-down btn-primary fa fa-plus-square-o" data-toggle="tooltip" title="Create"></button>
                         </span>
+                        <!-- ======================== Export  ====================================== -->
+                        <a asp-action="Excel" class="btn btn-success pull-right hidden-sm-down fa fa-file-excel-o" data-toggle="tooltip" title="Export Excel"></a>
+                        <a asp-action="ExportPdf" class="btn btn-danger pull-right hidden-sm-down fa fa-file-pdf-o" data-toggle="tooltip" title="Export Pdf"></a>
+                        <!-- ======================== Export  ====================================== -->
                     </div>
                     <div class="modal fade" id="mymodal" role="dialog">
                         <div class="modal-dialog">
@@ -34,33 +38,35 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="container">
-                                        <form>
-                                            @*<div class="form-group">
-            <input type="text" class="form-control" id="Id" name="Id" hidden />
-        </div>*@
-                                            <div class="form-group col-md-6">
-                                                <label for="SupervisorOption">Supervisor</label>
-                                                <select class="form-control" id="SupervisorOption" name="SupervisorOption"></select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="FormOption">Employee</label>
-                                                <select class="form-control" id="FormOption" name="FormOption"></select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="Form">Action:</label>
-                                                <select class="form-control" id="Action" name="Action">
-                                                    <option value="">Select Action</option>
-                                                    <option>Approve</option>
-                                                    <option>Reject</option>
-                                                </select>
-                                            </div>
-                                        </form>
+                                        <div class="col-md-6">
+                                            <form>
+                                                <div class="form-group ">
+                                                    <input type="hidden" class="form-control" id="Id" name="Id" />
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="SupervisorOption">Supervisor</label>
+                                                    <select class="form-control" id="SupervisorOption" name="SupervisorOption"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="FormOption">Form Id</label>
+                                                    <select class="form-control" id="FormOption" name="FormOption"></select>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="Form">Action:</label>
+                                                    <select class="form-control" id="Action" name="Action">
+                                                        <option value="">Select Action</option>
+                                                        <option>Approve</option>
+                                                        <option>Reject</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn-outline-success" data-dismiss="modal" id="Save" onclick="Save();">Insert</button>
-                                    <button type="button" class="btn-outline-warning" data-dismiss="modal" id="Update" onclick="Update();">Update</button>
-                                    <button type="button" class="btn-outline-primary" data-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn-outline-success" data-dismiss="modal" id="Save" onclick="Save();">Insert</button>
+                                        <button type="button" class="btn-outline-warning" data-dismiss="modal" id="Update" onclick="Update();">Update</button>
+                                        <button type="button" class="btn-outline-primary" data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,18 +77,17 @@
                                 <tr>
                                     <th>Status</th>
                                     <th>Supervisor</th>
-                                    <th>Employee Name</th>
+                                    <th>Form Id</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- /.container-fluid -->
     </div>
-    <!-- /.container-fluid -->
 </div>
 
 @section Scripts{
@@ -101,23 +106,23 @@
 
 
     @*<script src="~/Mini AdminPro/assets/plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap tether Core JavaScript -->
-        <script src="~/Mini AdminPro/assets/plugins/bootstrap/js/popper.min.js"></script>
-        <script src="~/Mini AdminPro/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <!-- slimscrollbar scrollbar JavaScript -->
-        <script src="~/Mini AdminPro/main/js/jquery.slimscroll.js"></script>
-        <!--Wave Effects -->
-        <script src="~/Mini AdminPro/main/js/waves.js"></script>
-        <!--Menu sidebar -->
-        <script src="~/Mini AdminPro/main/js/sidebarmenu.js"></script>
-        <!--stickey kit -->
-        <script src="~/Mini AdminPro/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-        <!--Custom JavaScript -->
-        <script src="~/Mini AdminPro/main/js/custom.min.js"></script>
-        <!-- This is data table -->
-        <script src="~/Mini AdminPro/assets/plugins/datatables/jquery.dataTables.min.js"></script>*@
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/Mini AdminPro/assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/Mini AdminPro/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/Mini AdminPro/main/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="~/Mini AdminPro/main/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/Mini AdminPro/main/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="~/Mini AdminPro/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/Mini AdminPro/main/js/custom.min.js"></script>
+    <!-- This is data table -->
+    <script src="~/Mini AdminPro/assets/plugins/datatables/jquery.dataTables.min.js"></script>*@
 
-    <script src="~/Scripts/ValidationScripts.js"></script>
+
 
     <!-- ============================================================== -->
     <!-- Style switcher -->
@@ -126,5 +131,5 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js "></script>
     @*<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>*@
-
+    <script src="~/Scripts/ValidationScripts.js"></script>
 }

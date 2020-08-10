@@ -15,9 +15,9 @@ $(document).ready(function () {
             {
                 "render": function (data, type, row) {
                     //console.log(row);
-                    return '<button class="btn btn-warning" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return Update(' + row.id + ')" >Edit</button>'
+                    return '<button class="btn btn-info fa fa-pencil-square-o" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ></button>'
                         + '&nbsp;'
-                        + '<button class="btn btn-danger" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" >Delete</button>'
+                        + '<button class="btn btn-danger fa fa-trash-o" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ></button>'
                 }
             }
         ]
@@ -60,7 +60,8 @@ function Save() {
                 position: 'center',
                 type: 'success',
                 title: 'Supervisor inserted Successfully'
-            })
+            });
+            table.ajax.reload();
         } else {
             Swal.fire('Error', 'Failed to Input', 'error');
             ClearScreen();
@@ -83,7 +84,8 @@ function Update() {
                 position: 'center',
                 type: 'success',
                 title: 'Supervisor Updated Successfully'
-            })
+            });
+            table.ajax.reload();
         } else {
             Swal.fire('Error', 'Failed to Input', 'error');
             ClearScreen();

@@ -5,9 +5,9 @@ var arrForms = [];
 $(document).ready(function () {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
 
-    //debugger;
+    debugger;
     table = $("#validation").DataTable({
         "processing": true,
         "responsive": true,
@@ -29,16 +29,15 @@ $(document).ready(function () {
             //},
             { "data": "action" },
             { "data": "supervisorName" },
-            { "data": "formName" },
+            { "data": "formId" },
 
             {
                 "sortable": false,
                 "render": function (data, type, row) {
                     //console.log(row);
-                    $('[data-toggle="tooltip"]').tooltip();
-                    return '<button class="btn btn-md btn-outline-warning btn-circle" data-toggle="tooltip" data-placement="left"  title="Edit" onclick="return GetById(' + row.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
+                    return '<button class="btn btn-info fa fa-pencil-square-o" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ></button>'
                         + '&nbsp;'
-                        + '<button class="btn btn-md btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ><i class="fa fa-lg fa-trash"></i></button>'
+                        + '<button class="btn btn-danger fa fa-trash-o" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ></button>'
                 }
             }
         ]
@@ -55,7 +54,7 @@ function ClearScreen() {
     $('#Save').show();
 }
 
-//Supervisor
+//============= Get data Supervisor for Dropdown =================
 function LoadSupervisor(element) {
     //debugger;
     if (arrSuperv.length === 0) {
@@ -82,10 +81,10 @@ function renderSupervisor(element) {
     });
 }
 
-LoadSupervisor($('#SupervisorOption'))
+LoadSupervisor($('#SupervisorOption'));
+//============= Get data Supervisor for Dropdown =================
 
-
-//Forms
+//============= Get data Form for Dropdown =================
 function LoadForm(element) {
     //debugger;
     if (arrForms.length === 0) {
@@ -106,13 +105,14 @@ function LoadForm(element) {
 function renderForm(element) {
     var $option = $(element);
     $option.empty();
-    $option.append($('<option/>').val('0').text('Select Employee').hide());
+    $option.append($('<option/>').val('0').text('Select Form Id').hide());
     $.each(arrForms, function (i, val) {
-        $option.append($('<option/>').val(val.id).text(val.name))
+        $option.append($('<option/>').val(val.id).text(val.id))
     });
 }
 
-LoadForm($('#FormOption'))
+LoadForm($('#FormOption'));
+//============= Get data Form for Dropdown =================
 
 
 function GetById(id) {
@@ -120,7 +120,7 @@ function GetById(id) {
         url: "/validations/GetById/",
         data: { id: id }
     }).then((result) => {
-        //debugger;
+        debugger;
         $('#Id').val(result.id);
         $('#Action').val(result.action);
         $('#SupervisorOption').val(result.supervisorId);
@@ -160,6 +160,7 @@ function Save() {
 }
 
 function Update() {
+    debugger;
     var Validation = new Object();
     Validation.id = $('#Id').val();
     Validation.Action = $('#Action').val();
@@ -172,7 +173,7 @@ function Update() {
         dataType: "JSON",
         data: Validation
     }).then((result) => {
-        //debugger;
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
