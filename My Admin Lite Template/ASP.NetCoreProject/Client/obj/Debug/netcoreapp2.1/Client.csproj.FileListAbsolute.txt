@@ -76,3 +76,137 @@ F:\program\belajar .NET\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Deb
 F:\program\belajar .NET\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
 F:\program\belajar .NET\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.Views.pdb
 F:\program\belajar .NET\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csproj.CopyComplete
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\appsettings.json
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\libman.json
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.deps.json
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.json
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.dev.json
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.dll
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.pdb
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.Views.dll
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.Views.pdb
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csprojAssemblyReference.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.AssemblyInfoInputs.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.AssemblyInfo.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csproj.CoreCompileInputs.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorAssemblyInfo.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorAssemblyInfo.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.input.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.output.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorCoreGenerate.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Layout\_Layout.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Layout\_LayoutFikri.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Departments\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Forms\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Supervisors\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Validations\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorTargetAssemblyInfo.cache
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorTargetAssemblyInfo.cs
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.Views.pdb
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csproj.CopyComplete
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.dll
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.pdb
+D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.genruntimeconfig.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\appsettings.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\libman.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.deps.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.dev.json
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.dll
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.pdb
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.Views.dll
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.Views.pdb
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csprojAssemblyReference.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.AssemblyInfoInputs.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.AssemblyInfo.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csproj.CoreCompileInputs.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorAssemblyInfo.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorAssemblyInfo.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.input.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.output.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorCoreGenerate.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Layout\_Layout.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Layout\_LayoutFikri.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Admins\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Departments\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Employees\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Forms\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Supervisors\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Validations\Index.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorTargetAssemblyInfo.cache
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorTargetAssemblyInfo.cs
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.Views.pdb
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csproj.CopyComplete
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.dll
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.pdb
+D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.genruntimeconfig.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.deps.json
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.json
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.runtimeconfig.dev.json
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.dll
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.pdb
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.Views.dll
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\Client.Views.pdb
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csprojAssemblyReference.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csproj.CoreCompileInputs.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorAssemblyInfo.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorAssemblyInfo.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.AssemblyInfoInputs.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.AssemblyInfo.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.input.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.output.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorCoreGenerate.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Layout\_Layout.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Layout\_LayoutFikri.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Admins\Index.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Departments\Index.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Employees\Index.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Forms\Index.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Supervisors\Index.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\Validations\Index.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorTargetAssemblyInfo.cache
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.RazorTargetAssemblyInfo.cs
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.Views.pdb
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.csproj.CopyComplete
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.dll
+F:\program\belajar .NET\Fikri\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\Client\obj\Debug\netcoreapp2.1\Client.pdb

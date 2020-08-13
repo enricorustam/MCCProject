@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ASP.NetCoreProject.Models;
 using Client.Helper;
+using Client.Pdf;
+using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -13,89 +16,6 @@ namespace Client.Controllers
 {
     public class DepartmentsController : Controller
     {
-
-        //HelperAPI _api = new HelperAPI();
-        //public async Task<IActionResult> Index()
-        //{
-        //    IEnumerable<Department> Departments;
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Departments");
-        //    Departments = res.Content.ReadAsAsync<IEnumerable<Department>>().Result;
-        //    return View(Departments);
-        //}
-
-        //public async Task<IActionResult> Details(int Id)
-        //{
-        //    var Departments = new Department();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Departments/" + Id.ToString());
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    Departments = JsonConvert.DeserializeObject<Department>(result.Substring(1, result.Length - 2));
-        //    return View(Departments);
-        //}
-
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Create(Department Department)
-        //{
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = client.PostAsJsonAsync("Departments", Department).Result;
-        //    if (res.Content.ReadAsStringAsync().Result == "False")
-        //    {
-        //        return View();
-        //    }
-        //    TempData["msg"] = "<script>alert('Saved Successfully!');</script>";
-        //    return RedirectToAction("Index");
-        //}
-
-        //public async Task<ActionResult> Edit(int Id)
-        //{
-        //    var Departments = new Department();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Departments/" + Id.ToString());
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    Departments = JsonConvert.DeserializeObject<Department>(result.Substring(1, result.Length - 2));
-        //    return View(Departments);
-        //}
-
-        //[HttpPost]
-        //public ActionResult Edit(Department Department, int Id)
-        //{
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = client.PutAsJsonAsync("Departments/" + Id.ToString(), Department).Result;
-        //    if (res.Content.ReadAsStringAsync().Result == "False")
-        //    {
-        //        return View();
-        //    }
-        //    TempData["msg"] = "<script>alert('Saved Successfully!');</script>";
-        //    return RedirectToAction("Index");
-        //}
-        //public async Task<ActionResult> Delete(int Id)
-        //{
-        //    var Departments = new Department();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Departments/" + Id.ToString());
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    Departments = JsonConvert.DeserializeObject<Department>(result.Substring(1, result.Length - 2));
-        //    return View(Departments);
-        //}
-
-        //[HttpPost]
-        //public ActionResult DeleteSend(int Id)
-        //{
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = client.DeleteAsync("Departments/" + Id.ToString()).Result;
-        //    if (res.Content.ReadAsStringAsync().Result != "True")
-        //    {
-        //        TempData["msg"] = "<script>alert('Data failed to deleted!');</script>";
-        //    }
-        //    TempData["msg"] = "<script>alert('Data successfully deleted!');</script>";
-        //    return RedirectToAction("Index");
-        //}
         readonly HttpClient client = new HttpClient
         {
             BaseAddress = new Uri("https://localhost:44358/api/")
@@ -161,15 +81,15 @@ namespace Client.Controllers
             return Json(404);
         }
 
-        public JsonResult Update(Department department, int id)
+        public JsonResult Update(Department department, int Id)
         {
             var json = JsonConvert.SerializeObject(department);
             var buffer = System.Text.Encoding.UTF8.GetBytes(json);
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            if (department.Id == id)
+            if (department.Id == Id)
             {
-                var result = client.PutAsync("departments/" + id, byteContent).Result;
+                var result = client.PutAsync("departments/" + Id, byteContent).Result;
                 return Json(result);
             }
             return Json(404);
@@ -179,6 +99,57 @@ namespace Client.Controllers
         {
             var result = client.DeleteAsync("departments/" + id).Result;
             return Json(result);
+        }
+
+        public async Task<IActionResult> Excel()
+        {
+            List<Department> departments = new List<Department>();
+            HttpResponseMessage resView = await client.GetAsync("Departments");
+            var resultView = resView.Content.ReadAsStringAsync().Result;
+            departments = JsonConvert.DeserializeObject<List<Department>>(resultView);
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Departments");
+                var currentRow = 1;
+                var number = 0;
+                worksheet.Cell(currentRow, 1).Value = "No";
+                worksheet.Cell(currentRow, 2).Value = "Department Id";
+                worksheet.Cell(currentRow, 3).Value = "Department Name";
+
+                foreach (var dep in departments)
+                {
+                    currentRow++;
+                    number++;
+                    worksheet.Cell(currentRow, 1).Value = number;
+                    worksheet.Cell(currentRow, 2).Value = dep.Id;
+                    worksheet.Cell(currentRow, 3).Value = dep.Name;
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var conten = stream.ToArray();
+                    return File(conten, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "Departments_Data.xlsx");
+                }
+            }
+        }
+        public ActionResult ExportPdf()
+        {
+            DepartmentPdf departmentPdf = new DepartmentPdf();
+            List<Department> departments = new List<Department>();
+
+            var resTask = client.GetAsync("departments");
+            resTask.Wait();
+            var result = resTask.Result;
+
+            var readTask = result.Content.ReadAsAsync<List<Department>>();
+            readTask.Wait();
+            departments = readTask.Result;
+
+            byte[] abytes = departmentPdf.Prepare(departments);
+            return File(abytes, "application/pdf");
         }
     }
 }

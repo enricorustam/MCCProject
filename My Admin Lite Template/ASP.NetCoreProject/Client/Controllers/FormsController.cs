@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using ASP.NetCoreProject.Models;
 using ASP.NetCoreProject.ViewModels;
 using Client.Helper;
+using Client.Pdf;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -101,93 +103,67 @@ namespace Client.Controllers
             return Json(result);
         }
 
-        //public IActionResult Excel()
-        //{
-        //    using (var workbook = new XLWorkbook())
-        //    {
-        //        var worksheet = workbook.Worksheets.Add("Forms");
-        //        var currentRow = 1;
-        //        worksheet.Cell(currentRow, 1).Value = "name";
-        //        worksheet.Cell(currentRow, 2).Value = "startDate";
-        //        worksheet.Cell(currentRow, 2).Value = "endDate";
-        //        worksheet.Cell(currentRow, 2).Value = "duration";
-        //        worksheet.Cell(currentRow, 2).Value = "Username";
+        public async Task<IActionResult> Excel()
+        {
+            List<FormVM> forms = new List<FormVM>();
+            HttpResponseMessage resView = await client.GetAsync("forms");
+            var resultView = resView.Content.ReadAsStringAsync().Result;
+            forms = JsonConvert.DeserializeObject<List<FormVM>>(resultView);
 
-        //        foreach (var Form in formsVM)
-        //        {
-        //            currentRow++;
-        //            worksheet.Cell(currentRow, 1).Value = forms.Id;
-        //            worksheet.Cell(currentRow, 2).Value = forms.Username;
-        //        }
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("forms");
+                var currentRow = 1;
+                var number = 0;
+                worksheet.Cell(currentRow, 1).Value = "No";
+                worksheet.Cell(currentRow, 2).Value = "Id";
+                worksheet.Cell(currentRow, 3).Value = "Employee Name";
+                worksheet.Cell(currentRow, 4).Value = "Start Date";
+                worksheet.Cell(currentRow, 5).Value = "End Date";
+                worksheet.Cell(currentRow, 6).Value = "Duration";
+                worksheet.Cell(currentRow, 7).Value = "Supervisor Name";
+                worksheet.Cell(currentRow, 8).Value = "Department Name";
 
-        //        using (var stream = new MemoryStream())
-        //        {
-        //            workbook.SaveAs(stream);
-        //            var content = stream.ToArray();
+                foreach (var form in forms)
+                {
+                    currentRow++;
+                    number++;
+                    worksheet.Cell(currentRow, 1).Value = number;
+                    worksheet.Cell(currentRow, 2).Value = form.Id;
+                    worksheet.Cell(currentRow, 3).Value = form.employeeName;
+                    worksheet.Cell(currentRow, 4).Value = form.StartDate;
+                    worksheet.Cell(currentRow, 5).Value = form.EndDate;
+                    worksheet.Cell(currentRow, 6).Value = form.Duration;
+                    worksheet.Cell(currentRow, 7).Value = form.supervisorName;
+                    worksheet.Cell(currentRow, 8).Value = form.departmentName;
+                }
 
-        //            return File(
-        //                content,
-        //                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        //                "users.xlsx");
-        //        }
-        //    }
-        //}
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var conten = stream.ToArray();
+                    return File(conten, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "Forms_Data.xlsx");
+                }
+            }
+        }
 
-        //public void ExportToExcel()
-        //{
-        //    List<FormVM> emplist = db.EmployeeInfoes.Select(x => new EmployeeViewModel
-        //    {
-        //        EmployeeId = x.EmployeeId,
-        //        EmployeeName = x.EmployeeName,
-        //        Email = x.Email,
-        //        Phone = x.Phone,
-        //        Experience = x.Experience
-        //    }).ToList();
+        public ActionResult ExportPdf()
+        {
+            FormPdf formPdf = new FormPdf();
+            List<FormVM> forms = new List<FormVM>();
 
-        //    ExcelPackage pck = new ExcelPackage();
-        //    ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
+            var resTask = client.GetAsync("forms");
+            resTask.Wait();
+            var result = resTask.Result;
 
-        //    ws.Cells["A1"].Value = "Communication";
-        //    ws.Cells["B1"].Value = "Com1";
+            var readTask = result.Content.ReadAsAsync<List<FormVM>>();
+            readTask.Wait();
+            forms = readTask.Result;
 
-        //    ws.Cells["A2"].Value = "Report";
-        //    ws.Cells["B2"].Value = "Report1";
-
-        //    ws.Cells["A3"].Value = "Date";
-        //    ws.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", DateTimeOffset.Now);
-
-        //    ws.Cells["A6"].Value = "EmployeeId";
-        //    ws.Cells["B6"].Value = "EmployeeName";
-        //    ws.Cells["C6"].Value = "Email";
-        //    ws.Cells["D6"].Value = "Phone";
-        //    ws.Cells["E6"].Value = "Experience";
-
-        //    int rowStart = 7;
-        //    foreach (var item in emplist)
-        //    {
-        //        if (item.Experience < 5)
-        //        {
-        //            ws.Row(rowStart).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-        //            ws.Row(rowStart).Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml(string.Format("pink")));
-
-        //        }
-
-        //        ws.Cells[string.Format("A{0}", rowStart)].Value = item.EmployeeId;
-        //        ws.Cells[string.Format("B{0}", rowStart)].Value = item.EmployeeName;
-        //        ws.Cells[string.Format("C{0}", rowStart)].Value = item.Email;
-        //        ws.Cells[string.Format("D{0}", rowStart)].Value = item.Phone;
-        //        ws.Cells[string.Format("E{0}", rowStart)].Value = item.Experience;
-        //        rowStart++;
-        //    }
-
-        //    ws.Cells["A:AZ"].AutoFitColumns();
-        //    Response.Clear();
-        //    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        //    Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
-        //    Response.BinaryWrite(pck.GetAsByteArray());
-        //    Response.End();
-
-        //}
+            byte[] abytes = formPdf.Prepare(forms);
+            return File(abytes, "application/pdf");
+        }
 
         //HelperAPI _api = new HelperAPI();
         //public async Task<IActionResult> Index()

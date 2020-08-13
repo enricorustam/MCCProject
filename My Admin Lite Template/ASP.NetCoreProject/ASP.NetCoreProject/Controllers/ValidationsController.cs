@@ -70,5 +70,12 @@ namespace ASP.NetCoreProject.Controllers
             return BadRequest("Delete Validation is failed");
 
         }
+
+        [HttpGet]
+        [Route("Pie")]
+        public async Task<IEnumerable<ValidationVM>> GetPie()
+        {
+            return await _ValidationRepository.getValidationChart();
+        }
     }
 }

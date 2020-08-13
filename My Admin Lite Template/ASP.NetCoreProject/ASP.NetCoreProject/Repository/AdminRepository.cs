@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ASP.NetCoreProject.Repository
 {
-    public class AdminRepository : IAdminRepositoy
+    public class AdminRepository : IAdminRepository
     {
         IConfiguration _configuration;
         DynamicParameters parameters = new DynamicParameters();
@@ -19,6 +19,7 @@ namespace ASP.NetCoreProject.Repository
         {
             _configuration = configuration;
         }
+
         public int Create(AdminVM admin)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
@@ -29,9 +30,8 @@ namespace ASP.NetCoreProject.Repository
                 var InsertAdmin = connection.Execute(procName, parameters, commandType: CommandType.StoredProcedure);
                 return InsertAdmin;
             }
-
-
         }
+
         public int Delete(int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))

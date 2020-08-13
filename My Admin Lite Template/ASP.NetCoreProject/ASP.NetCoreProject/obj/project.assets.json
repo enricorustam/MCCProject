@@ -12806,11 +12806,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
+      "projectUniqueName": "F:\\program\\belajar .NET\\Fikri\\MCCProject-Fikri\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
       "projectName": "ASP.NetCoreProject",
-      "projectPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
+      "projectPath": "F:\\program\\belajar .NET\\Fikri\\MCCProject-Fikri\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\ASP.NetCoreProject.csproj",
       "packagesPath": "C:\\Users\\Enrico\\.nuget\\packages\\",
-      "outputPath": "F:\\program\\belajar .NET\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\obj\\",
+      "outputPath": "F:\\program\\belajar .NET\\Fikri\\MCCProject-Fikri\\My Admin Lite Template\\ASP.NetCoreProject\\ASP.NetCoreProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
