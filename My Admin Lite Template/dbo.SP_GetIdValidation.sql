@@ -4,8 +4,9 @@ AS
 	SELECT 
 		Val.Id, 
 		Val.Action,
-		F.Name as formName,
-		SUP.Name as supervisorName
+		F.Id as formId,
+		SUP.Name as supervisorName,
+		SUP.Id as supervisorId
 	From TB_M_Validation Val 
 	JOIN TB_M_Form F ON Val.formId = F.Id
 	JOIN TB_M_Supervisor SUP ON Val.supervisorId = SUP.Id

@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE SP_GetAllForm
+﻿CREATE PROCEDURE SP_GetAllFromEmpForm
+	@EmpId int
 AS
 	SELECT 
 		F.Id "Id", 
@@ -16,4 +17,5 @@ AS
 	JOIN TB_M_Employee EMP ON F.employeeId = EMP.Id
 	JOIN TB_M_Department DEP ON F.departmentId = DEP.Id
 	JOIN TB_M_Supervisor SUP ON F.supervisorId = SUP.Id
+	Where employeeId = @EmpId
 RETURN 0
