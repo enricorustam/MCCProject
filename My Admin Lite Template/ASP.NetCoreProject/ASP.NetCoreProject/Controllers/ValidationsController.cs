@@ -59,7 +59,6 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpDelete("{Id}")]
-
         public IActionResult DeleteValidation(int Id)
         {
             var delete = _ValidationRepository.Delete(Id);

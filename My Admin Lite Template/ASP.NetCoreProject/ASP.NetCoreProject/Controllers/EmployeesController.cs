@@ -26,7 +26,7 @@ namespace ASP.NetCoreProject.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult CreateEmployee([FromBody]EmployeeVM employee)
         {
             var create = _employeeRepository.Create(employee);
@@ -35,7 +35,12 @@ namespace ASP.NetCoreProject.Controllers
                 return Ok(create);
             }
             return BadRequest("Create Employee is failed");
+        }
 
+        [HttpPost("Login")]
+        public EmployeeVM LoginEmployee(EmployeeVM employee)
+        {
+            return _employeeRepository.Login(employee);
         }
 
         [HttpGet("{id}")]

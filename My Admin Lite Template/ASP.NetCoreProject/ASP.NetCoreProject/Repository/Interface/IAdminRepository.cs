@@ -13,5 +13,6 @@ namespace ASP.NetCoreProject.Repository.Interface
         int Create(AdminVM admin);
         int Update(AdminVM admin, int Id);
         int Delete(int Id);
+        AdminVM Login(AdminVM admin);
     }
 }

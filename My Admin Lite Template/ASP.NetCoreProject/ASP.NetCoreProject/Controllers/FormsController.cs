@@ -39,6 +39,12 @@ namespace ASP.NetCoreProject.Controllers
 
         }
 
+        [HttpGet("GetAllEmp/{id}")]
+        public async Task<IEnumerable<FormVM>> GetAllEmp(int Id)
+        {
+            return await _formRepository.GetAllfromEmp(Id);
+        }
+
         [HttpGet("{id}")]
         public FormVM GetIdForms(int Id)
         {

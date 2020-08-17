@@ -2,8 +2,6 @@
 var arrSuperv = [];
 var arrForms = [];
 
-
-
 $(document).ready(function () {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -192,40 +190,6 @@ function Update() {
     })
 }
 
-function Delete(id) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
-        if (result.value) {
-            //debugger;
-            $.ajax({
-                url: "/validations/Delete/",
-                data: { id: id }
-            }).then((result) => {
-                //debugger;
-                if (result.statusCode == 200) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Delete Successfully',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                    table.ajax.reload();
-                } else {
-                    Swal.fire('Error', 'Failed to Delete', 'error');
-                    ClearScreen();
-                }
-            })
-        };
-    });
-}
-
 am4core.useTheme(am4themes_animated);
 
 am4core.createFromConfig({
@@ -272,4 +236,38 @@ am4core.createFromConfig({
 
     // Add legend
     "legend": {},
-}, "pieChart", am4charts.PieChart);
+}, "pieChart", am4charts.PieChart); 
+
+function Delete(id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+        if (result.value) {
+            //debugger;
+            $.ajax({
+                url: "/validations/Delete/",
+                data: { id: id }
+            }).then((result) => {
+                //debugger;
+                if (result.statusCode == 200) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Delete Successfully',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    table.ajax.reload();
+                } else {
+                    Swal.fire('Error', 'Failed to Delete', 'error');
+                    ClearScreen();
+                }
+            })
+        };
+    });
+}

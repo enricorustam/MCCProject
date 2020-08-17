@@ -25,7 +25,7 @@ namespace ASP.NetCoreProject.Controllers
             return await _adminRepository.GetAll();
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult CreateAdmin(AdminVM admin)
         {
             var create = _adminRepository.Create(admin);
@@ -34,6 +34,12 @@ namespace ASP.NetCoreProject.Controllers
                 return Ok(create);
             }
             return BadRequest("Not Successfully");
+        }
+
+        [HttpPost("Login")]
+        public AdminVM LoginEmployee(AdminVM admin)
+        {
+            return _adminRepository.Login(admin);
         }
 
         [HttpGet("{Id}")]

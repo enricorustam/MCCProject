@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ASP.NetCoreProject.Models;
 using Client.Pdf;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -21,7 +22,22 @@ namespace Client.Controllers
         };
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Admin")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
         }
 
         public JsonResult LoadAdmin()
@@ -74,7 +90,7 @@ namespace Client.Controllers
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             if (admin.Id == 0)
             {
-                var result = client.PostAsync("Admins", byteContent).Result;
+                var result = client.PostAsync("Admins/Create", byteContent).Result;
                 return Json(result);
             }
             return Json(404);
@@ -151,6 +167,12 @@ namespace Client.Controllers
 
             byte[] abytes = adminPdf.Prepare(admins);
             return File(abytes, "application/pdf");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

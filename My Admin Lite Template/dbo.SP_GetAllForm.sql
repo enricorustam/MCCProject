@@ -1,16 +1,19 @@
 ﻿CREATE PROCEDURE SP_GetAllForm
 AS
 	SELECT 
-		F.Id, 
-		E.Name as employeeName,
-		E.NIP as employeeNIP,
-		F.StartDate,
-		F.EndDate,
-		F.Duration,
+		F.Id "Id", 
+		F.StartDate "StartDate",
+		F.EndDate "EndDate",
+		F.Duration "Duration",
 		DEP.Name as departmentName,
-		SUP.Name as supervisorName
+		DEP.Id as departmentId,
+		SUP.Name as supervisorName,
+		SUP.Id as supervisorId,
+		EMP.Name as employeeName,
+		EMP.Id as employeeId
+
 	From TB_M_Form F 
-	JOIN TB_M_Employee E ON F.employeeId = E.Id
+	JOIN TB_M_Employee EMP ON F.employeeId = EMP.Id
 	JOIN TB_M_Department DEP ON F.departmentId = DEP.Id
 	JOIN TB_M_Supervisor SUP ON F.supervisorId = SUP.Id
 RETURN 0

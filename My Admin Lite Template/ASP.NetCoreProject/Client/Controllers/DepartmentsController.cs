@@ -9,6 +9,7 @@ using ASP.NetCoreProject.Models;
 using Client.Helper;
 using Client.Pdf;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -22,7 +23,22 @@ namespace Client.Controllers
         };
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Admin")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
         }
 
         public JsonResult LoadDepartment()
@@ -150,6 +166,12 @@ namespace Client.Controllers
 
             byte[] abytes = departmentPdf.Prepare(departments);
             return File(abytes, "application/pdf");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

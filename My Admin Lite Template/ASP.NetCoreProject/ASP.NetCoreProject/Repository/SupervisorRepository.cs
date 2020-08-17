@@ -25,6 +25,7 @@ namespace ASP.NetCoreProject.Repository
             {
                 var procName = "SP_InsertSupervisor";
                 parameters.Add("Name", supervisor.Name);
+                parameters.Add("Pass", supervisor.Password);
                 var InsertSupervisor = connection.Execute(procName, parameters, commandType: CommandType.StoredProcedure);
                 return InsertSupervisor;
             }
@@ -63,6 +64,18 @@ namespace ASP.NetCoreProject.Repository
             };
         }
 
+        public SupervisorVM Login(SupervisorVM supervisor)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
+            {
+                var procName = "SP_LoginSupervisor";
+                parameters.Add("Name", supervisor.Name);
+                parameters.Add("Pass", supervisor.Password);
+                var loginSupervisor = connection.Query<SupervisorVM>(procName, parameters, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                return loginSupervisor;
+            }
+        }
+
         public int Update(SupervisorVM supervisor, int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
@@ -70,6 +83,7 @@ namespace ASP.NetCoreProject.Repository
                 var procName = "SP_EditSupervisor";
                 parameters.Add("Id", Id);
                 parameters.Add("Name", supervisor.Name);
+                parameters.Add("Pass", supervisor.Password);
                 var EditSupervisor = connection.Execute(procName, parameters, commandType: CommandType.StoredProcedure);
                 return EditSupervisor;
             }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ASP.NetCoreProject.ViewModels;
 using Client.Pdf;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -21,7 +22,44 @@ namespace Client.Controllers
         };
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if ( sessionRole.ToString() == "Admin")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
+
+        public IActionResult OvertimeVal()
+        {
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Supervisor" || sessionRole.ToString() == "Employee")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    var sessionId = JsonConvert.DeserializeObject<int>(HttpContext.Session.GetString("SessionId"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    ViewBag.SesId = sessionId;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
         }
 
         public JsonResult LoadValidation()
@@ -154,7 +192,6 @@ namespace Client.Controllers
             byte[] abytes = validationPdf.Prepare(validations);
             return File(abytes, "application/pdf");
         }
-
         public JsonResult LoadPieChart()
         {
             IEnumerable<ValidationVM> pieCharts = null;
@@ -174,6 +211,11 @@ namespace Client.Controllers
                 ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
             }
             return Json(pieCharts);
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

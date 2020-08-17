@@ -6,8 +6,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ASP.NetCoreProject.Models;
+using ASP.NetCoreProject.ViewModels;
 using Client.Pdf;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -21,7 +23,59 @@ namespace Client.Controllers
         };
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Admin")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
+
+        public IActionResult EmployeeData()
+        {
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Employee")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+
+                    var sessionId = JsonConvert.DeserializeObject<int>(HttpContext.Session.GetString("SessionId"));
+
+                    EmployeeVM employee = null;
+                    var resTask = client.GetAsync("Employees/" + sessionId);
+                    resTask.Wait();
+
+                    var result = resTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                        employee = JsonConvert.DeserializeObject<EmployeeVM>(json);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server Error.");
+                    }
+                    return View(employee);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
         }
 
         public JsonResult LoadEmployee()
@@ -74,7 +128,7 @@ namespace Client.Controllers
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             if (employee.Id == 0)
             {
-                var result = client.PostAsync("Employees", byteContent).Result;
+                var result = client.PostAsync("Employees/Create", byteContent).Result;
                 return Json(result);
             }
             return Json(404);
@@ -151,6 +205,12 @@ namespace Client.Controllers
 
             byte[] abytes = employeePdf.Prepare(employees);
             return File(abytes, "application/pdf");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

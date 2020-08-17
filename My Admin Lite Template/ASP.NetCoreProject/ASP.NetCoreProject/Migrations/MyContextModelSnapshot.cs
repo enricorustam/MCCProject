@@ -116,6 +116,8 @@ namespace ASP.NetCoreProject.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("Password");
+
                     b.HasKey("Id");
 
                     b.ToTable("TB_M_Supervisor");

@@ -6,9 +6,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ASP.NetCoreProject.Models;
-using Client.Helper;
+using ASP.NetCoreProject.ViewModels;
 using Client.Pdf;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -16,96 +17,65 @@ namespace Client.Controllers
 {
     public class SupervisorsController : Controller
     {
-        //    HelperAPI _api = new HelperAPI();
-        //    public async Task<IActionResult> Index()
-        //    {
-        //        IEnumerable<Supervisor> Supervisors;
-        //        HttpClient client = _api.Initial();
-        //        HttpResponseMessage res = await client.GetAsync("Supervisors");
-        //        Supervisors = res.Content.ReadAsAsync<IEnumerable<Supervisor>>().Result;
-        //        return View(Supervisors);
-        //    }
-
-        //    public async Task<IActionResult> Details(int Id)
-        //    {
-        //        var Supervisors = new Supervisor();
-        //        HttpClient client = _api.Initial();
-        //        HttpResponseMessage res = await client.GetAsync("Supervisors/" + Id.ToString());
-        //        var result = res.Content.ReadAsStringAsync().Result;
-        //        Supervisors = JsonConvert.DeserializeObject<Supervisor>(result.Substring(1, result.Length - 2));
-        //        return View(Supervisors);
-        //    }
-
-        //    public ActionResult Create()
-        //    {
-        //        return View();
-        //    }
-
-        //    [HttpPost]
-        //    public ActionResult Create(Supervisor Supervisor)
-        //    {
-        //        HttpClient client = _api.Initial();
-        //        HttpResponseMessage res = client.PostAsJsonAsync("Supervisors", Supervisor).Result;
-        //        if (res.Content.ReadAsStringAsync().Result == "False")
-        //        {
-        //            return View();
-        //        }
-        //        TempData["msg"] = "<script>alert('Saved Successfully!');</script>";
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    public async Task<ActionResult> Edit(int Id)
-        //    {
-        //        var Supervisors = new Supervisor();
-        //        HttpClient client = _api.Initial();
-        //        HttpResponseMessage res = await client.GetAsync("Supervisors/" + Id.ToString());
-        //        var result = res.Content.ReadAsStringAsync().Result;
-        //        Supervisors = JsonConvert.DeserializeObject<Supervisor>(result.Substring(1, result.Length - 2));
-        //        return View(Supervisors);
-        //    }
-
-        //    [HttpPost]
-        //    public ActionResult Edit(Supervisor Supervisor, int Id)
-        //    {
-        //        HttpClient client = _api.Initial();
-        //        HttpResponseMessage res = client.PutAsJsonAsync("Supervisors/" + Id.ToString(), Supervisor).Result;
-        //        if (res.Content.ReadAsStringAsync().Result == "False")
-        //        {
-        //            return View();
-        //        }
-        //        TempData["msg"] = "<script>alert('Saved Successfully!');</script>";
-        //        return RedirectToAction("Index");
-        //    }
-        //    public async Task<ActionResult> Delete(int Id)
-        //    {
-        //        var Supervisors = new Supervisor();
-        //        HttpClient client = _api.Initial();
-        //        HttpResponseMessage res = await client.GetAsync("Supervisors/" + Id.ToString());
-        //        var result = res.Content.ReadAsStringAsync().Result;
-        //        Supervisors = JsonConvert.DeserializeObject<Supervisor>(result.Substring(1, result.Length - 2));
-        //        return View(Supervisors);
-        //    }
-
-        //    [HttpPost]
-        //    public ActionResult DeleteSend(int Id)
-        //    {
-        //        HttpClient client = _api.Initial();
-        //        HttpResponseMessage res = client.DeleteAsync("Supervisors/" + Id.ToString()).Result;
-        //        if (res.Content.ReadAsStringAsync().Result != "True")
-        //        {
-        //            TempData["msg"] = "<script>alert('Data failed to deleted!');</script>";
-        //        }
-        //        TempData["msg"] = "<script>alert('Data successfully deleted!');</script>";
-        //        return RedirectToAction("Index");
-        //    }
-
         readonly HttpClient client = new HttpClient
         {
             BaseAddress = new Uri("https://localhost:44358/api/")
         };
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Admin")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+
+        }
+        public IActionResult SupervisorData()
+        {
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Supervisor")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+
+                    var sessionId = JsonConvert.DeserializeObject<int>(HttpContext.Session.GetString("SessionId"));
+
+                    SupervisorVM supervisor = null;
+                    var resTask = client.GetAsync("Supervisors/" + sessionId);
+                    resTask.Wait();
+
+                    var result = resTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                        supervisor = JsonConvert.DeserializeObject<SupervisorVM>(json);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server Error.");
+                    }
+                    return View(supervisor);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
         }
 
         public JsonResult LoadSupervisor()
@@ -158,7 +128,7 @@ namespace Client.Controllers
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             if (supervisor.Id == 0)
             {
-                var result = client.PostAsync("supervisors", byteContent).Result;
+                var result = client.PostAsync("supervisors/Create", byteContent).Result;
                 return Json(result);
             }
             return Json(404);
@@ -199,6 +169,7 @@ namespace Client.Controllers
                 worksheet.Cell(currentRow, 1).Value = "No";
                 worksheet.Cell(currentRow, 2).Value = "Supervisor Id";
                 worksheet.Cell(currentRow, 3).Value = "Supervisor Name";
+                worksheet.Cell(currentRow, 4).Value = "Supervisor Password";
 
                 foreach (var spv in supervisors)
                 {
@@ -207,6 +178,7 @@ namespace Client.Controllers
                     worksheet.Cell(currentRow, 1).Value = number;
                     worksheet.Cell(currentRow, 2).Value = spv.Id;
                     worksheet.Cell(currentRow, 3).Value = spv.Name;
+                    worksheet.Cell(currentRow, 4).Value = spv.Password;
                 }
 
                 using (var stream = new MemoryStream())
@@ -233,6 +205,12 @@ namespace Client.Controllers
 
             byte[] abytes = supervisorPdf.Prepare(supervisors);
             return File(abytes, "application/pdf");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

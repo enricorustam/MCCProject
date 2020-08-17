@@ -1,0 +1,103 @@
+﻿* {
+    /*margin: 0;
+    padding: 0;*/
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    margin: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(pic1.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+/*    overflow: hidden;*/
+    background-attachment: fixed;
+}
+a{
+    color: #fff;
+    text-decoration:none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+a:hover{
+    opacity:1;
+}
+a.btn{
+    color:#fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: 0.4s all;
+}
+
+    a.btn:hover {
+        background-color: #d73851;
+        border: 1px solid #d73851;
+        color:#fff;
+    }
+
+.divButton{
+    display:flex;
+    z-index:10;
+    position:relative;
+    width:500px;
+    box-shadow:4px 8px 16px rgba(0,0,0,0.3);
+}
+
+.divButton > *{
+    border:0;
+    padding: 0 0 0 10px;
+    background: #fff;
+    line-height: 50px;
+    font-size: 1rem;
+    border-radius:0;
+    outline: 0;
+}
+
+.cover {
+    height: 100vh;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 6rem;
+    font-weight:700;
+    margin: 0 0 1.5rem;
+    color: white;
+}
+
+@media all and (max-width: 800px){
+    body{
+        font-size: 0.9rem;
+    }
+
+    .divButton{
+        width:100%;
+    }
+
+    .divButton > *{
+        font-size: 0.9rem;
+    }
+
+    h1{
+        font-size: 2rem;
+    }
+
+    .cover{
+        padding:20px;
+    }
+}
+
+@media all and (max-width: 360px){
+    .divButton{
+        display:flex;
+        flex-direction:column;
+    }
+}
+

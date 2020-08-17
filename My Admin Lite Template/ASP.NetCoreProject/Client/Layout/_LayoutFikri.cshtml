@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,18 +20,7 @@
     <link href="~/myadmin-lite/asset/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="~/myadmin-lite/css/style.css" rel="stylesheet">
-    <style type="text/css">
-        .chartdiv{
-            height:500px;
-            width:100%;
-        }
-    </style>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="~/css/CustomStyle.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -42,7 +33,7 @@
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
             <div class="navbar-header">
                 <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-                <div class="top-left-part"><a class="logo" href="dashboard.html"><i class="glyphicon glyphicon-fire"></i>&nbsp;<span class="hidden-xs">Overtime App</span></a></div>
+                <div class="top-left-part"><a class="logo" href="https://localhost:44300/Home/WellPage"><i class="glyphicon glyphicon-fire"></i>&nbsp;<span class="hidden-xs">Overtime App</span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li>
                         <a href="javascript:void(0)" class="open-close hidden-xs hidden-lg
@@ -51,11 +42,15 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <a class="profile-pic" href="#"> <b class="hidden-xs">Maruti</b> </a>
-                    </li>
-                </ul>
+                @if (Context.Session.GetString("SessionRole") != null)
+                {
+                    <ul class="nav navbar-top-links navbar-right pull-right">
+                        <li>
+                            <a asp-action="Logout">Log Out</a>
+                        </li>
+                    </ul>
+                }
+
             </div>
             <!-- /.navbar-header -->
             <!-- /.navbar-top-links -->
@@ -64,23 +59,51 @@
         <div class="navbar-default sidebar nicescroll" role="navigation">
             <div class="sidebar-nav navbar-collapse ">
                 <ul class="nav" id="side-menu">
-                    <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><i class="ti-search"></i> </button>
-                            </span>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="dashboard.html" class="waves-effect"><i class="glyphicon glyphicon-fire fa-fw"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="profile.html" class="waves-effect"><i class="ti-user fa-fw"></i>Profile</a>
-                    </li>
-                    <li>
-                        <a href="basic-table.html" class="waves-effect"><i class="ti-layout fa-fw"></i>Basic-Table</a>
-                    </li>
+                    @if (ViewBag.SesRole == "Admin")
+                    {
+                        <li>
+                            <a href="https://localhost:44300/Employees/" class="waves-effect"><i class="fa fa-user fa-fw"></i>Employee Data</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Supervisors/" class="waves-effect"><i class="fa fa-user-o fa-fw"></i>Supervisor Data</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Departments/" class="waves-effect"><i class="fa fa-users fa-fw"></i>Department Data</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Forms/" class="waves-effect"><i class="fa fa-pencil-square fa-fw"></i>Form Data</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Validations/" class="waves-effect"><i class="ti-check-box fa-fw"></i>Validations Data</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Admins/" class="waves-effect"><i class="fa fa-user-circle-o fa-fw"></i>Admin Data</a>
+                        </li>
+                    }
+                    else if (ViewBag.SesRole == "Employee")
+                    {
+                        <li>
+                            <a href="https://localhost:44300/Employees/EmployeeData" class="waves-effect"><i class="fa fa-user fa-fw"></i>@ViewBag.SesName Data</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Forms/OvertimeEmp" class="waves-effect"><i class="fa fa-pencil-square fa-fw"></i>Overtime Form</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Validations/OvertimeVal" class="waves-effect"><i class="ti-check-box fa-fw"></i>Overtime Validation Report</a>
+                        </li>
+                    }
+                    else if (ViewBag.SesRole == "Supervisor")
+                    {
+                        <li>
+                            <a href="https://localhost:44300/Supervisors/SupervisorData" class="waves-effect"><i class="fa fa-user-o fa-fw"></i>@ViewBag.SesName Data</a>
+                        </li>
+                        <li>
+                            <a href="https://localhost:44300/Validations/OvertimeVal" class="waves-effect"><i class="ti-check-box fa-fw"></i>Overtime Validation</a>
+                        </li>
+                    }
+                    else
+                    {
+                    }
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
@@ -88,11 +111,11 @@
         <!-- Page Content -->
         @RenderBody();
         <!-- /#page-wrapper -->
-        <footer class="footer text-center"> 2017 &copy; Myadmin brought to you by wrappixel.com </footer>
+        @*<footer class="footer text-center"> 2017 &copy; Myadmin brought to you by wrappixel.com </footer>*@
     </div>
     <!-- /#wrapper -->
     @RenderSection("Scripts", required: false);
-    
+
 </body>
 
 </html>
