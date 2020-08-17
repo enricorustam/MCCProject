@@ -1,0 +1,52 @@
+﻿@model ASP.NetCoreProject.ViewModels.SupervisorVM
+@{
+    ViewData["Title"] = "SupervisorData";
+    Layout = "~/Layout/_LayoutFikri.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-12">
+                <h4 class="page-title"></h4>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3>Employee Data</h3>
+                    <h4>Name : @Html.DisplayFor(model => model.Name) </h4>
+                    @*<h4>NIP : @Html.DisplayFor(model => model.Password) </h4>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+@section Scripts{
+
+    <!-- jQuery -->
+    <script src="~/myadmin-lite/bower/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/myadmin-lite/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="~/myadmin-lite/bower/metisMenu/dist/metisMenu.min.js"></script>
+    <!--Nice scroll JavaScript -->
+    <script src="js/jquery.nicescroll.js"></script>
+    <!--Morris JavaScript -->
+    <script src="~/myadmin-lite/bower/raphael/raphael-min.js"></script>
+    <script src="~/myadmin-lite/bower/morrisjs/morris.js"></script>
+    <!--Wave Effects -->
+    <script src="~/myadmin-lite/js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js "></script>
+
+    <!-- end - This is for export functionality only -->
+    <script src="~/myadmin-lite/js/myadmin.js"></script>
+    <script src="~/myadmin-lite/js/dashboard1.js"></script>
+}
+

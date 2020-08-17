@@ -9,7 +9,7 @@ namespace ASP.NetCoreProject.Repository.Interface
     public interface IFormRepository
     {
         Task<IEnumerable<FormVM>> GetAll();
-
+        Task<IEnumerable<FormVM>> GetAllfromEmp(int EmpId);
         FormVM GetById(int Id);
 
         int Create(FormVM form);

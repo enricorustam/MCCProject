@@ -1,0 +1,58 @@
+﻿@model ASP.NetCoreProject.Models.Employee
+@{
+    ViewData["Title"] = "LoginEmployee";
+    Layout = "~/Layout/_LayoutEmpty.cshtml";
+}
+
+<div class="cover">
+    <div class="white-box">
+        <form asp-action="LoginEmployee">
+            <h1 style="color:dimgrey;"> Login Employee</h1>
+            <h3 style="color:red;">@ViewBag.Message</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Username</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input type="password" asp-for="NIP" class="form-control" />
+                <span asp-validation-for="NIP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <!-- jQuery -->
+    <script src="~/myadmin-lite/bower/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/myadmin-lite/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="~/myadmin-lite/bower/metisMenu/dist/metisMenu.min.js"></script>
+    <!--Nice scroll JavaScript -->
+    <script src="js/jquery.nicescroll.js"></script>
+    <!--Morris JavaScript -->
+    <script src="~/myadmin-lite/bower/raphael/raphael-min.js"></script>
+    <script src="~/myadmin-lite/bower/morrisjs/morris.js"></script>
+    <!--Wave Effects -->
+    <script src="~/myadmin-lite/js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js "></script>
+
+    <!-- end - This is for export functionality only -->
+    <script src="~/myadmin-lite/js/myadmin.js"></script>
+    <script src="~/myadmin-lite/js/dashboard1.js"></script>
+    <!-- Amchart Script -->
+    <script src="~/amcharts_4.9.33/amcharts4/core.js"></script>
+    <script src="~/amcharts_4.9.33/amcharts4/charts.js"></script>
+    <script src="~/amcharts_4.9.33/amcharts4/themes/animated.js"></script>
+
+}

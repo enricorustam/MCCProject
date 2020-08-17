@@ -11,6 +11,7 @@ using Client.Helper;
 using Client.Pdf;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Drawing.Charts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -25,13 +26,71 @@ namespace Client.Controllers
         };
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if ( sessionRole.ToString() == "Admin")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
+
+        public IActionResult OvertimeEmp()
+        {
+            try
+            {
+                var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
+                if (sessionRole.ToString() == "Employee")
+                {
+                    var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
+                    var sessionId = JsonConvert.DeserializeObject<int>(HttpContext.Session.GetString("SessionId"));
+                    ViewBag.SesRole = sessionRole;
+                    ViewBag.SesName = sessionName;
+                    ViewBag.SesId = sessionId;
+                    return View();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
         }
 
         public JsonResult LoadForm()
         {
             IEnumerable<FormVM> formsVM = null;
             var resTask = client.GetAsync("forms");
+            resTask.Wait();
+
+            var result = resTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<List<FormVM>>();
+                readTask.Wait();
+                formsVM = readTask.Result;
+            }
+            else
+            {
+                formsVM = Enumerable.Empty<FormVM>();
+                ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
+            }
+            return Json(formsVM);
+        }
+
+        public JsonResult LoadFormEmp(int Id)
+        {
+            IEnumerable<FormVM> formsVM = null;
+            var resTask = client.GetAsync("forms/GetAllEmp/" + Id);
             resTask.Wait();
 
             var result = resTask.Result;
@@ -165,118 +224,10 @@ namespace Client.Controllers
             return File(abytes, "application/pdf");
         }
 
-        //HelperAPI _api = new HelperAPI();
-        //public async Task<IActionResult> Index()
-        //{
-        //    List<FormVM> Form = new List<FormVM>();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Forms");
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    Form = JsonConvert.DeserializeObject<List<FormVM>>(result);
-        //    return View(Form);
-        //}
-
-        //public async Task<IActionResult> Details(int Id)
-        //{
-        //    var Form = new FormVM();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Forms/" + Id.ToString());
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    Form = JsonConvert.DeserializeObject<FormVM>(result.Substring(1, result.Length - 2));
-        //    return View(Form);
-        //}
-
-        //public async Task<ActionResult> Create()
-        //{
-        //    List<Supervisor> supervisors = new List<Supervisor>();
-        //    List<Department> departments = new List<Department>();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Supervisors");
-        //    HttpResponseMessage res2 = await client.GetAsync("Departments");
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    var result2 = res2.Content.ReadAsStringAsync().Result;
-        //    supervisors = JsonConvert.DeserializeObject<List<Supervisor>>(result);
-        //    departments = JsonConvert.DeserializeObject<List<Department>>(result2);
-        //    var list = supervisors.Select(r => r.Id);
-        //    var list2 = departments.Select(r2 => r2.Id);
-        //    ViewBag.supervisor = new SelectList(list, "Id");
-        //    ViewBag.department = new SelectList(list2, "Id");
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Create(Form Form)
-        //{
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = client.PostAsJsonAsync("Forms", Form).Result;
-        //    if (res.Content.ReadAsStringAsync().Result == "False")
-        //    {
-        //        return View();
-        //    }
-        //    TempData["msg"] = "<script>alert('Saved Successfully!');</script>";
-        //    return RedirectToAction("Index");
-        //}
-
-        //public async Task<ActionResult> Edit(int Id)
-        //{
-
-        //    List<Supervisor> supervisors = new List<Supervisor>();
-        //    List<Department> departments = new List<Department>();
-        //    HttpClient clientView = _api.Initial();
-        //    HttpResponseMessage resView = await clientView.GetAsync("Supervisors");
-        //    HttpResponseMessage resView2 = await clientView.GetAsync("Departments");
-        //    var resultView = resView.Content.ReadAsStringAsync().Result;
-        //    var resultView2 = resView2.Content.ReadAsStringAsync().Result;
-        //    supervisors = JsonConvert.DeserializeObject<List<Supervisor>>(resultView);
-        //    departments = JsonConvert.DeserializeObject<List<Department>>(resultView2);
-        //    var list = supervisors.Select(r => r.Id);
-        //    var list2 = departments.Select(r2 => r2.Id);
-        //    ViewBag.supervisor = new SelectList(list, "Id");
-        //    ViewBag.department = new SelectList(list2, "Id");
-
-        //    var Form = new Form();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Forms/" + Id.ToString());
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    Form = JsonConvert.DeserializeObject<Form>(result.Substring(1, result.Length - 2));
-
-        //    return View(Form);
-        //}
-
-        //[HttpPost]
-        //public ActionResult Edit(Form Form, int Id)
-        //{
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = client.PutAsJsonAsync("Forms/" + Id.ToString(), Form).Result;
-        //    if (res.Content.ReadAsStringAsync().Result == "False")
-        //    {
-        //        return View();
-        //    }
-        //    TempData["msg"] = "<script>alert('Saved Successfully!');</script>";
-        //    return RedirectToAction("Index");
-        //}
-
-        //public async Task<ActionResult> Delete(int Id)
-        //{
-        //    var Form = new Form();
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = await client.GetAsync("Forms/" + Id.ToString());
-        //    var result = res.Content.ReadAsStringAsync().Result;
-        //    Form = JsonConvert.DeserializeObject<Form>(result.Substring(1, result.Length - 2));
-        //    return View(Form);
-        //}
-
-        //[HttpPost]
-        //public ActionResult DeleteSend(int Id)
-        //{
-        //    HttpClient client = _api.Initial();
-        //    HttpResponseMessage res = client.DeleteAsync("Forms/" + Id.ToString()).Result;
-        //    if (res.Content.ReadAsStringAsync().Result != "True")
-        //    {
-        //        TempData["msg"] = "<script>alert('Data failed to deleted!');</script>";
-        //    }
-        //    TempData["msg"] = "<script>alert('Data successfully deleted!');</script>";
-        //    return RedirectToAction("Index");
-        //}
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

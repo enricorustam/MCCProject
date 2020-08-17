@@ -12,6 +12,7 @@ $(document).ready(function () {
         },
         "columns": [
             { "data": "name" },
+            { "data": "password" },
             {
                 "render": function (data, type, row) {
                     //console.log(row);
@@ -20,13 +21,18 @@ $(document).ready(function () {
                         + '<button class="btn btn-danger fa fa-trash-o" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ></button>'
                 }
             }
-        ]
+        ],
+        "columnDefs": [{
+            "targets": [2],
+            "orderable": false
+        }]
     });
 });
 
 function ClearScreen() {
     $('#Id').val('');
     $('#Name').val('');
+    $('#Password').val('');
     $('#Update').hide();
     $('#Save').show();
 }
@@ -39,6 +45,7 @@ function GetById(id) {
         debugger;
         $('#Id').val(result.id);
         $('#Name').val(result.name);
+        $('#Password').val(result.password);
         $('#Save').hide();
         $('#Update').show();
         $('#mymodal').modal('show');
@@ -49,6 +56,7 @@ function Save() {
     debugger;
     var Supervisor = new Object();
     Supervisor.name = $('#Name').val();
+    Supervisor.password = $('#Password').val();
     $.ajax({
         type: 'POST',
         url: "/Supervisors/Insert/",
@@ -73,6 +81,7 @@ function Update() {
     var Supervisor = new Object();
     Supervisor.id = $('#Id').val();
     Supervisor.name = $('#Name').val();
+    Supervisor.password = $('#Password').val();
     $.ajax({
         type: 'POST',
         url: "/Supervisors/Update/",

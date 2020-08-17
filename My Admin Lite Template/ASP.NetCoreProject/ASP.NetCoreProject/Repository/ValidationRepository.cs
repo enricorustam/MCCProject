@@ -64,6 +64,16 @@ namespace ASP.NetCoreProject.Repository
             };
         }
 
+        public async Task<IEnumerable<ValidationVM>> getValidationChart()
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
+            {
+                var procName = "SP_GetValidationChart";
+                var getAll = await connection.QueryAsync<ValidationVM>(procName, commandType: CommandType.StoredProcedure);
+                return getAll;
+            }
+        }
+
         public int Update(ValidationVM validation, int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))

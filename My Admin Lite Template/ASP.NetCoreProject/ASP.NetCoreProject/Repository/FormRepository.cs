@@ -57,6 +57,17 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
+        public async Task<IEnumerable<FormVM>> GetAllfromEmp(int EmpId)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
+            {
+                var procName = "SP_GetAllFromEmpForm";
+                parameters.Add("EmpId", EmpId);
+                var getAllForm = await connection.QueryAsync<FormVM>(procName, parameters, commandType: CommandType.StoredProcedure);
+                return getAllForm;
+            }
+        }
+
         public FormVM GetById(int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))

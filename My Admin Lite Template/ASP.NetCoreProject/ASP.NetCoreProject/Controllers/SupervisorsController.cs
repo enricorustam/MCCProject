@@ -26,7 +26,7 @@ namespace ASP.NetCoreProject.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult CreateSupervisor([FromBody]SupervisorVM supervisor)
         {
             var create = _supervisorRepository.Create(supervisor);
@@ -36,6 +36,12 @@ namespace ASP.NetCoreProject.Controllers
             }
             return BadRequest("Create Supervisor is failed");
 
+        }
+
+        [HttpPost("Login")]
+        public SupervisorVM LoginEmployee(SupervisorVM supervisor)
+        {
+            return _supervisorRepository.Login(supervisor);
         }
 
         [HttpGet("{id}")]
@@ -69,6 +75,11 @@ namespace ASP.NetCoreProject.Controllers
             }
             return BadRequest("Delete Supervisor is failed");
 
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -65,6 +65,18 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
+        public AdminVM Login(AdminVM admin)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
+            {
+                var procName = "SP_LoginAdmin";
+                parameters.Add("Username", admin.Username);
+                parameters.Add("Pass", admin.Password);
+                var loginAdmin = connection.Query<AdminVM>(procName, parameters, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                return loginAdmin;
+            }
+        }
+
         public int Update(AdminVM admin, int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))

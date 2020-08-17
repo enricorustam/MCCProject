@@ -16,5 +16,6 @@ namespace ASP.NetCoreProject.Repository.Interface
         int Update(SupervisorVM supervisor, int Id);
 
         int Delete(int Id);
+        SupervisorVM Login(SupervisorVM employee);
     }
 }

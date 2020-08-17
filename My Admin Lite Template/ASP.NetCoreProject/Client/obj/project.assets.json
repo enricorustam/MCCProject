@@ -4738,6 +4738,7 @@
         "dependencies": {
           "ClosedXML": "0.95.3",
           "Dapper": "2.0.35",
+          "Microsoft.AspNetCore.Session": "2.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10"
         },
         "compile": {
@@ -12840,6 +12841,7 @@
       "ClosedXML >= 0.95.3",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
+      "Microsoft.AspNetCore.Session >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.10",
       "iTextSharp >= 5.5.13.1"
@@ -12906,6 +12908,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.2, )"
+          },
+          "Microsoft.AspNetCore.Session": {
+            "target": "Package",
+            "version": "[2.1.1, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",

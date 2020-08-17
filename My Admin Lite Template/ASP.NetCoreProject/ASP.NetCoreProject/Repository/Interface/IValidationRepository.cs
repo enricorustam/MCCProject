@@ -16,5 +16,6 @@ namespace ASP.NetCoreProject.Repository.Interface
         int Update(ValidationVM validation, int Id);
 
         int Delete(int Id);
+        Task<IEnumerable<ValidationVM>> getValidationChart();
     }
 }

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Overtime App</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/myadmin-lite/bower/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="~/myadmin-lite/bower/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="~/myadmin-lite/bower/morrisjs/morris.css" rel="stylesheet">
+    <link href="~/myadmin-lite/asset/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/myadmin-lite/css/style.css" rel="stylesheet">
+    @*<link href="~/css/CustomStyle.css" rel="stylesheet" />*@
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0;">
+            <div class="navbar-header " style="background-color: #3a3f51;">
+                <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+                <div class="top-left-part"><a class="logo" href="https://localhost:44300/Home/"><i class="glyphicon glyphicon-fire"></i>&nbsp;<span class="hidden-xs">Overtime App</span></a></div>
+            </div>
+        </nav>
+    </div>
+
+    @RenderBody()
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

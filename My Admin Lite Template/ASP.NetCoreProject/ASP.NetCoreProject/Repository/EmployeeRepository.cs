@@ -64,6 +64,18 @@ namespace ASP.NetCoreProject.Repository
             }
         }
 
+        public EmployeeVM Login(EmployeeVM employee)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))
+            {
+                var procName = "SP_LoginEmployee";
+                parameters.Add("Name", employee.Name);
+                parameters.Add("Nip", employee.NIP);
+                var loginEmployee = connection.Query<EmployeeVM>(procName, parameters, commandType: CommandType.StoredProcedure).SingleOrDefault();
+                return loginEmployee;
+            }
+        }
+
         public int Update(EmployeeVM employee, int Id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("myConn")))

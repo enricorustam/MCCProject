@@ -12,5 +12,6 @@ namespace ASP.NetCoreProject.ViewModels
         public int supervisorId { get; set; }
         public string supervisorName { get; set; }
         public int formId { get; set; }
+        public int total { get; set; }
     }
 }

@@ -59,7 +59,6 @@ namespace ASP.NetCoreProject.Controllers
         }
 
         [HttpDelete("{Id}")]
-
         public IActionResult DeleteValidation(int Id)
         {
             var delete = _ValidationRepository.Delete(Id);
@@ -69,6 +68,13 @@ namespace ASP.NetCoreProject.Controllers
             }
             return BadRequest("Delete Validation is failed");
 
+        }
+
+        [HttpGet]
+        [Route("Pie")]
+        public async Task<IEnumerable<ValidationVM>> GetPie()
+        {
+            return await _ValidationRepository.getValidationChart();
         }
     }
 }

@@ -12,10 +12,10 @@ namespace Client.Pdf
     public class SupervisorPdf
     {
         #region Declaration
-        int _totalColumn = 3; //check
+        int _totalColumn = 4; //check
         Document _document;
         Font _fontSylye;
-        PdfPTable _pdfTable = new PdfPTable(3); //check
+        PdfPTable _pdfTable = new PdfPTable(4); //check
         PdfPCell _pdfPCell;
         MemoryStream _memoryStream = new MemoryStream();
         List<Supervisor> _supervisors = new List<Supervisor>();
@@ -34,7 +34,7 @@ namespace Client.Pdf
             _fontSylye = FontFactory.GetFont("Tahoma", 8f, 1);
             PdfWriter.GetInstance(_document, _memoryStream);
             _document.Open();
-            _pdfTable.SetWidths(new float[] { 20f, 80f, 80f}); //check
+            _pdfTable.SetWidths(new float[] { 20f, 80f, 80f, 80f }); //check
             #endregion
 
             this.ReportHeader();
@@ -92,6 +92,12 @@ namespace Client.Pdf
             _pdfPCell.BackgroundColor = BaseColor.LIGHT_GRAY;
             _pdfTable.AddCell(_pdfPCell);
 
+            _pdfPCell = new PdfPCell(new Phrase("Password", _fontSylye));
+            _pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            _pdfPCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            _pdfPCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+            _pdfTable.AddCell(_pdfPCell);
+
             _pdfTable.CompleteRow();
             #endregion
 
@@ -112,6 +118,12 @@ namespace Client.Pdf
                 _pdfTable.AddCell(_pdfPCell);
 
                 _pdfPCell = new PdfPCell(new Phrase(supervisor.Name, _fontSylye));
+                _pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                _pdfPCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                _pdfPCell.BackgroundColor = BaseColor.WHITE;
+                _pdfTable.AddCell(_pdfPCell);
+
+                _pdfPCell = new PdfPCell(new Phrase(supervisor.Password, _fontSylye));
                 _pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 _pdfPCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 _pdfPCell.BackgroundColor = BaseColor.WHITE;

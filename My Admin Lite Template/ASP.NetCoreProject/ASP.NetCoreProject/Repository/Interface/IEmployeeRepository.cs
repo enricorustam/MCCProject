@@ -16,5 +16,6 @@ namespace ASP.NetCoreProject.Repository.Interface
         int Update(EmployeeVM employee, int Id);
 
         int Delete(int Id);
+        EmployeeVM Login(EmployeeVM employee);
     }
 }
