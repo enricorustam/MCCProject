@@ -176,50 +176,53 @@ function Update() {
     })
 }
 
-am4core.useTheme(am4themes_animated);
+if (role == "Supervisor") {
+    am4core.useTheme(am4themes_animated);
 
-am4core.createFromConfig({
-    // Set inner radius
-    "innerRadius": "50%",
+    am4core.createFromConfig({
+        // Set inner radius
+        "innerRadius": "50%",
 
-    // Set data
-    "dataSource": {
-        "url": "/Validations/LoadPieChart",
-        "parser": {
-            "type": "JSONParser",
+        // Set data
+        "dataSource": {
+            "url": "/Validations/LoadPieChart",
+            "parser": {
+                "type": "JSONParser",
+            },
+            "reloadFrequency": 5000,
         },
-        "reloadFrequency": 5000,
-    },
 
-    // Create series
-    "series": [{
-        "type": "PieSeries",
-        "dataFields": {
-            "value": "total",
-            "category": "action",
-        },
-        "slices": {
-            "cornerRadius": 10,
-            "innerCornerRadius": 7
-        },
-        "hiddenState": {
-            "properties": {
-                // this creates initial animation
-                "opacity": 1,
-                "endAngle": -90,
-                "startAngle": -90
-            }
-        },
-        "children": [{
-            "type": "Label",
-            "forceCreate": true,
-            "text": "Status",
-            "horizontalCenter": "middle",
-            "verticalCenter": "middle",
-            "fontSize": 40
-        }]
-    }],
+        // Create series
+        "series": [{
+            "type": "PieSeries",
+            "dataFields": {
+                "value": "total",
+                "category": "action",
+            },
+            "slices": {
+                "cornerRadius": 10,
+                "innerCornerRadius": 7
+            },
+            "hiddenState": {
+                "properties": {
+                    // this creates initial animation
+                    "opacity": 1,
+                    "endAngle": -90,
+                    "startAngle": -90
+                }
+            },
+            "children": [{
+                "type": "Label",
+                "forceCreate": true,
+                "text": "Status",
+                "horizontalCenter": "middle",
+                "verticalCenter": "middle",
+                "fontSize": 40
+            }]
+        }],
 
-    // Add legend
-    "legend": {},
-}, "pieChart", am4charts.PieChart);
+        // Add legend
+        "legend": {},
+    }, "pieChart", am4charts.PieChart);
+
+}

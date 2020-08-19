@@ -42,6 +42,19 @@ D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\ASP.NetCoreProject\o
 D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
 D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
 D:\Metrodata Code Camp Online\git\backup\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.genruntimeconfig.cache
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.deps.json
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.runtimeconfig.json
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.runtimeconfig.dev.json
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.csproj.CoreCompileInputs.cache
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.RazorAssemblyInfo.cache
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.RazorAssemblyInfo.cs
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.AssemblyInfoInputs.cache
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.AssemblyInfo.cs
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.RazorTargetAssemblyInfo.cache
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
+F:\program\MCCProject-Fikri\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\appsettings.Development.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\appsettings.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
@@ -50,7 +63,6 @@ D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreP
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.runtimeconfig.dev.json
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.dll
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\bin\Debug\netcoreapp2.1\ASP.NetCoreProject.pdb
-D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.csprojAssemblyReference.cache
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.AssemblyInfoInputs.cache
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.AssemblyInfo.cs
 D:\Metrodata Code Camp Online\git\MCCProject\My Admin Lite Template\ASP.NetCoreProject\ASP.NetCoreProject\obj\Debug\netcoreapp2.1\ASP.NetCoreProject.csproj.CoreCompileInputs.cache

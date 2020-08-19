@@ -94,9 +94,12 @@
             </div>
         </div>
         <!-- /.container-fluid -->
+        @if (ViewBag.SesRole == "Supervisor")
+        {
         <div class="white-box">
             <div class="chartdiv" id="pieChart"></div>
         </div>
+        }
     </div>
     <!-- /.container-fluid -->
 </div>

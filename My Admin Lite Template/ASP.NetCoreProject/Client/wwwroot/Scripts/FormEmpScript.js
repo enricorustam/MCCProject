@@ -3,108 +3,109 @@ var arrDepart = [];
 var arrSuperv = [];
 var arrEmp = [];
 var idtest = parseInt(document.getElementById("SesId").value);
+var role = document.getElementById("SesRole").value;
 
-//var idtest = $("#SesId").val();
-//var idtest = <%=ViewBag.SesId%>;
-am4core.useTheme(am4themes_animated);
+if (role == "Supervisor") {
+    am4core.useTheme(am4themes_animated);
 
-// =================================================================
-// Membuat chart (id/classchart, jenis chart)
-var chart = am4core.create("linechart", am4charts.XYChart);
+    // =================================================================
+    // Membuat chart (id/classchart, jenis chart)
+    var chart = am4core.create("linechart", am4charts.XYChart);
 
-// Increase contrast by taking evey second color
-chart.colors.step = 2;
+    // Increase contrast by taking evey second color
+    chart.colors.step = 2;
 
-// Add data
-// Mengambil data dari url (database)
-chart.dataSource.url = "/forms/LoadForm";
-chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
+    // Add data
+    // Mengambil data dari url (database)
+    chart.dataSource.url = "/forms/LoadForm";
+    chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
 
-// Create axes
-var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-dateAxis.renderer.minGridDistance = 50;
+    // Create axes
+    var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+    dateAxis.renderer.minGridDistance = 50;
 
-// Setinng chart (field y, notasi di data (x,y), .., notasi data berbentuk apa)
-function createAxisAndSeries(field, name, opposite, bullet) {
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    //if (chart.yAxes.indexOf(valueAxis) != 0) {
-    //    valueAxis.syncWithAxis = chart.yAxes.getIndex(0);
-    //    //console.log(chart.yAxes)
-    //}
+    // Setinng chart (field y, notasi di data (x,y), .., notasi data berbentuk apa)
+    function createAxisAndSeries(field, name, opposite, bullet) {
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        //if (chart.yAxes.indexOf(valueAxis) != 0) {
+        //    valueAxis.syncWithAxis = chart.yAxes.getIndex(0);
+        //    //console.log(chart.yAxes)
+        //}
 
-    var series = chart.series.push(new am4charts.LineSeries());
-    series.dataFields.valueY = field;
-    series.dataFields.dateX = "endDate";
-    series.strokeWidth = 2;
-    series.yAxis = valueAxis;
-    series.name = name;
-    series.tooltipText = "{name}: [bold]{valueY}[/]";
-    series.tensionX = 0.8;
-    series.showOnInit = true;
+        var series = chart.series.push(new am4charts.LineSeries());
+        series.dataFields.valueY = field;
+        series.dataFields.dateX = "endDate";
+        series.strokeWidth = 2;
+        series.yAxis = valueAxis;
+        series.name = name;
+        series.tooltipText = "{name}: [bold]{valueY}[/]";
+        series.tensionX = 0.8;
+        series.showOnInit = true;
 
-    var interfaceColors = new am4core.InterfaceColorSet();
+        var interfaceColors = new am4core.InterfaceColorSet();
 
-    switch (bullet) {
-        case "triangle":
-            var bullet = series.bullets.push(new am4charts.Bullet());
-            bullet.width = 12;
-            bullet.height = 12;
-            bullet.horizontalCenter = "middle";
-            bullet.verticalCenter = "middle";
+        switch (bullet) {
+            case "triangle":
+                var bullet = series.bullets.push(new am4charts.Bullet());
+                bullet.width = 12;
+                bullet.height = 12;
+                bullet.horizontalCenter = "middle";
+                bullet.verticalCenter = "middle";
 
-            var triangle = bullet.createChild(am4core.Triangle);
-            triangle.stroke = interfaceColors.getFor("background");
-            triangle.strokeWidth = 2;
-            triangle.direction = "top";
-            triangle.width = 12;
-            triangle.height = 12;
-            break;
-        case "rectangle":
-            var bullet = series.bullets.push(new am4charts.Bullet());
-            bullet.width = 10;
-            bullet.height = 10;
-            bullet.horizontalCenter = "middle";
-            bullet.verticalCenter = "middle";
+                var triangle = bullet.createChild(am4core.Triangle);
+                triangle.stroke = interfaceColors.getFor("background");
+                triangle.strokeWidth = 2;
+                triangle.direction = "top";
+                triangle.width = 12;
+                triangle.height = 12;
+                break;
+            case "rectangle":
+                var bullet = series.bullets.push(new am4charts.Bullet());
+                bullet.width = 10;
+                bullet.height = 10;
+                bullet.horizontalCenter = "middle";
+                bullet.verticalCenter = "middle";
 
-            var rectangle = bullet.createChild(am4core.Rectangle);
-            rectangle.stroke = interfaceColors.getFor("background");
-            rectangle.strokeWidth = 2;
-            rectangle.width = 10;
-            rectangle.height = 10;
-            break;
-        default:
-            var bullet = series.bullets.push(new am4charts.CircleBullet());
-            bullet.circle.stroke = interfaceColors.getFor("background");
-            bullet.circle.strokeWidth = 2;
-            break;
+                var rectangle = bullet.createChild(am4core.Rectangle);
+                rectangle.stroke = interfaceColors.getFor("background");
+                rectangle.strokeWidth = 2;
+                rectangle.width = 10;
+                rectangle.height = 10;
+                break;
+            default:
+                var bullet = series.bullets.push(new am4charts.CircleBullet());
+                bullet.circle.stroke = interfaceColors.getFor("background");
+                bullet.circle.strokeWidth = 2;
+                break;
+        }
+
+        valueAxis.renderer.line.strokeOpacity = 1;
+        valueAxis.renderer.line.strokeWidth = 2;
+        valueAxis.renderer.line.stroke = series.stroke;
+        valueAxis.renderer.labels.template.fill = series.stroke;
+        valueAxis.renderer.opposite = opposite;
+
+        // Create vertical scrollbar and place it before the value axis
+        chart.scrollbarY = new am4core.Scrollbar();
+        chart.scrollbarY.parent = chart.leftAxesContainer;
+        chart.scrollbarY.toBack();
+        // Create a horizontal scrollbar with previe and place it underneath the date axis
+        chart.scrollbarX = new am4charts.XYChartScrollbar();
+        chart.scrollbarX.series.push(series);
+        chart.scrollbarX.parent = chart.bottomAxesContainer;
+
+        //dateAxis.start = 0.79;
+        dateAxis.keepSelection = true;
     }
 
-    valueAxis.renderer.line.strokeOpacity = 1;
-    valueAxis.renderer.line.strokeWidth = 2;
-    valueAxis.renderer.line.stroke = series.stroke;
-    valueAxis.renderer.labels.template.fill = series.stroke;
-    valueAxis.renderer.opposite = opposite;
+    // Add legend
+    chart.legend = new am4charts.Legend();
 
-    // Create vertical scrollbar and place it before the value axis
-    chart.scrollbarY = new am4core.Scrollbar();
-    chart.scrollbarY.parent = chart.leftAxesContainer;
-    chart.scrollbarY.toBack();
-    // Create a horizontal scrollbar with previe and place it underneath the date axis
-    chart.scrollbarX = new am4charts.XYChartScrollbar();
-    chart.scrollbarX.series.push(series);
-    chart.scrollbarX.parent = chart.bottomAxesContainer;
+    createAxisAndSeries("duration", "Overtime Duration", false, "circle");
 
-    //dateAxis.start = 0.79;
-    dateAxis.keepSelection = true;
+    // Add cursor agar data bisa dilihat per titik
+    chart.cursor = new am4charts.XYCursor();
 }
-
-// Add legend
-chart.legend = new am4charts.Legend();
-
-createAxisAndSeries("duration", "Overtime Duration", false, "circle");
-
-// Add cursor agar data bisa dilihat per titik
-chart.cursor = new am4charts.XYCursor();
 
 function convertToDate(data) {
     // The 6th+ positions contain the number of milliseconds in Universal Coordinated Time between the specified date and midnight January 1, 1970.
@@ -120,47 +121,81 @@ $(document).ready(function () {
     })
 
     debugger;
-    table = $("#form").DataTable({
-        "processing": true,
-        "responsive": true,
-        "pagination": true,
-        "stateSave": true,
-        "ajax": {
-            url: "/Forms/LoadForm/",
-            type: "GET",
-            //data: { id: idtest},
-            dataType: "json",
-            dataSrc: "",
-        },
-        "columns": [
-            { "data": "id" },
-            { "data": "employeeName"},
-            {
-                "data": "startDate",
-                //"render": function (data) { return convertToDate(data); }
+    if (role == "Employee") {
+        table = $("#form").DataTable({
+            "processing": true,
+            "responsive": true,
+            "pagination": true,
+            "stateSave": true,
+            "ajax": {
+                url: "/Forms/LoadForm/",
+                type: "GET",
+                //data: { id: idtest},
+                dataType: "json",
+                dataSrc: "",
             },
-            {
-                "data": "endDate",
-                //"render": function (data) { return convertToDate(data); }
-            },
-            { "data": "duration" },
-            { "data": "supervisorName" },
-            { "data": "departmentName" },
-            {
-                "sortable": false,
-                "render": function (data, type, row) {
-                    //console.log(row);
-                    if (row.employeeId == idtest) {
-                        return '<button class="btn btn-info fa fa-pencil-square-o" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ></button>'
-                    } else {
-                        return ' '
+            "columns": [
+                { "data": "id" },
+                { "data": "employeeName" },
+                {
+                    "data": "startDate",
+                    //"render": function (data) { return convertToDate(data); }
+                },
+                {
+                    "data": "endDate",
+                    //"render": function (data) { return convertToDate(data); }
+                },
+                { "data": "duration" },
+                { "data": "supervisorName" },
+                { "data": "departmentName" },
+                {
+                    "sortable": false,
+                    "render": function (data, type, row) {
+                        //console.log(row);
+                        if (row.employeeId == idtest) {
+                            return '<button class="btn btn-info fa fa-pencil-square-o" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ></button>'
+                        } else {
+                            return ' '
+                        }
                     }
                 }
-            }
-        ]
-        //,
-        //'buttons': ['excel', 'pdf']
-    });
+            ]
+            //,
+            //'buttons': ['excel', 'pdf']
+        });
+    }
+    else {
+        table = $("#form").DataTable({
+            "processing": true,
+            "responsive": true,
+            "pagination": true,
+            "stateSave": true,
+            "ajax": {
+                url: "/Forms/LoadForm/",
+                type: "GET",
+                //data: { id: idtest},
+                dataType: "json",
+                dataSrc: "",
+            },
+            "columns": [
+                { "data": "id" },
+                { "data": "employeeName" },
+                {
+                    "data": "startDate",
+                    //"render": function (data) { return convertToDate(data); }
+                },
+                {
+                    "data": "endDate",
+                    //"render": function (data) { return convertToDate(data); }
+                },
+                { "data": "duration" },
+                { "data": "supervisorName" },
+                { "data": "departmentName" }
+            ]
+            //,
+            //'buttons': ['excel', 'pdf']
+        });
+    }
 });
 
 function ClearScreen() {

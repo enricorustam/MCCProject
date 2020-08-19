@@ -49,7 +49,7 @@ namespace Client.Controllers
             try
             {
                 var sessionRole = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionRole"));
-                if (sessionRole.ToString() == "Employee")
+                if (sessionRole.ToString() == "Supervisor" || sessionRole.ToString() == "Employee")
                 {
                     var sessionName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("SessionName"));
                     var sessionId = JsonConvert.DeserializeObject<int>(HttpContext.Session.GetString("SessionId"));

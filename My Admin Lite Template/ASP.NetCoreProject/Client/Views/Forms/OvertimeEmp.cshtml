@@ -22,13 +22,19 @@
                 <div class="white-box">
                     <h3>Form Overtime</h3>
                     <div>
+                        @if (ViewBag.SesRole == "Employee")
+                        {
                         <span data-toggle="modal" data-target="#mymodal" onclick="ClearScreen();">
                             <button class="btn pull-right hidden-sm-down btn-primary fa fa-plus-square-o" data-toggle="tooltip" title="Create"></button>
                         </span>
+                        }
+                        else
+                        {
                         <!-- ======================== Export  ====================================== -->
                         <a asp-action="Excel" class="btn btn-success pull-right hidden-sm-down fa fa-file-excel-o" data-toggle="tooltip" title="Export Excel"></a>
                         <a asp-action="ExportPdf" class="btn btn-danger pull-right hidden-sm-down fa fa-file-pdf-o" data-toggle="tooltip" title="Export Pdf"></a>
                         <!-- ======================== Export  ====================================== -->
+                        }
                     </div>
                     <div class="modal fade" id="mymodal" role="dialog">
                         <div class="modal-dialog">
@@ -89,20 +95,26 @@
                                     <th>Duration</th>
                                     <th>Supervisor</th>
                                     <th>Department</th>
-                                    <th>Action</th>
+                                    @if (ViewBag.SesRole == "Employee")
+                                    {
+                                        <th>Action</th>
+                                    }
                                 </tr>
                             </thead>
 
                         </table>
                     </div>
                     @Html.Hidden("SesId", (int)ViewBag.SesId)
-                    <div id="chartdiv"></div>
+                    @Html.Hidden("SesRole", (string)ViewBag.SesRole)
                 </div>
             </div>
         </div>
+        @if (ViewBag.SesRole == "Supervisor")
+        {
         <div class="white-box">
             <div class="chartdiv" id="linechart"></div>
         </div>
+        }
     </div>
     <!-- /.container-fluid -->
 </div>
